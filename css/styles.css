@@ -94,7 +94,7 @@ svg {
 
 .legend {
     padding: 6px 8px;
-    font-size: 1em;
+    font-size: 1.3em;
     font-family: "Josefin Sans";
     background-image: url(../img/document.png);
     -webkit-background-size: cover;

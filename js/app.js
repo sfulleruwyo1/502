@@ -7,6 +7,7 @@
     let dropZone;
     let elementCount = 0;
     let slider;
+    let german_7;
     let mapboxTiles = L.tileLayer(
         'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
             attribution: ''
@@ -190,6 +191,7 @@
 
         })
     }
+
 
     function sliderui() {
         let sliderControl = L.control({
@@ -394,7 +396,7 @@
                     dayControl.onAdd = function (map) {
                         const dayBtn = L.DomUtil.create('input', 'btn');
                         dayBtn.type = 'button';
-                        dayBtn.title = 'June 7';
+                        dayBtn.title = 'June 7th';
                         dayBtn.value = 'Next Day';
                         return dayBtn;
                     };
@@ -437,10 +439,19 @@
 
         // add the control to the map
         sliderControl.addTo(map);
+        //load June 7th data
 
+        moveTroops("../data/american_7.geojson", "../img/airborne.PNG", 1, 2, 502)
+        moveTroops("../data/american_7.geojson", "../img/airborne.PNG", 1, 2, 501)
+        moveTroops("../data/american_7.geojson", "../img/airborne.PNG", 1, 2, 506)
+        moveTroops("../data/american_7.geojson", "../img/glider.PNG", 1, 2, 327)
+        moveTroops("../data/german_7.geojson", "../img/airborne.PNG", 1, 2, 6)
+        moveTroops("../data/german_7.geojson", "../img/airborne.PNG", 1, 2, 1058)
         $("#range2").on("input change", function () { // when user changes
             let time = this.value; // update the year
             $(".time2").html(`June ${time}th`)
+
+            
         })
     }
 
@@ -618,8 +629,6 @@
                             sliderui()
 
                         })
-
-
                     })
 
 
@@ -651,8 +660,206 @@
 
     }
 
-    addToMap(url);
+    function moveTroops(url, symbol, start, end, regiment) {
+        let svg = d3.select(map.getPanes().overlayPane).append("svg");
 
+        let g = svg.append("g").attr("class", "leaflet-zoom-hide");
+
+        d3.json(url, function (collection) {
+            var featuresdata = collection.features.filter(function (d) {
+                return d.properties.regiment == regiment
+            })
+
+            var transform = d3.geo.transform({
+                point: projectPoint
+            });
+
+            var d3path = d3.geo.path().projection(transform);
+
+            var toLine = d3.svg.line()
+                .interpolate("linear")
+                .x(function (d) {
+                    return applyLatLngToLayer(d).x
+                })
+                .y(function (d) {
+                    return applyLatLngToLayer(d).y
+                });
+
+            var ptFeatures = g.selectAll("circle")
+                .data(featuresdata)
+                .enter()
+                .append("circle")
+                .attr("r", 3)
+                .attr("class", "waypoints");
+
+            var linePath = g.selectAll(".lineConnect")
+                .data([featuresdata])
+                .enter()
+                .append("path")
+                .attr("class", "lineConnect")
+                .attr("class", 'opacity');
+
+            var marker = g.append("image")
+                .attr("id", "d" + regiment)
+                //.attr("class", "travelMarker")
+                .attr("xlink:href", symbol)
+                .attr("height", 25)
+                .attr("width", 25)
+                .attr("x", -10)
+                .attr("y", -10)
+                .attr("class", 'opacityIn');
+
+            // Start and End destinations for styling
+            var originANDdestination = [featuresdata[start], featuresdata[end]]
+
+            // var begend = g.selectAll(".drinks")
+            //     .data(originANDdestination)
+            //     .enter()
+            //     .append("image")
+            //     .attr("xlink:href", "../img/parachute.png")
+            //     .attr("id", function (d) {
+            //         return d.properties.name
+            //     })
+            //     .attr("class", "parachute")
+            //     .attr("height", 20)
+            //     .attr("width", 20)
+            //     .attr("x", -10)
+            //     .attr("y", -10);
+
+            // var text = g.selectAll("text")
+            //     .data(originANDdestination)
+            //     .enter()
+            //     .append("text")
+            //     .text(function (d) {
+            //         return d.properties.name
+            //     })
+            //     .attr("id", function (d) {
+            //         return d.properties.name + 'Text'
+            //     })
+            //     .attr("class", "locnames")
+            //     .attr("y", function (d) {
+            //         return -10
+            //     })
+
+            
+            map.on("viewreset", reset);
+            map.on("zoom", reset);
+
+            reset();
+            transition();
+
+            function reset() {
+                console.log('reset');
+                var bounds = d3path.bounds(collection),
+                    topLeft = bounds[0],
+                    bottomRight = bounds[1];
+
+                // text.attr("transform",
+                //     function (d) {
+                //         return "translate(" +
+                //             applyLatLngToLayer(d).x + "," +
+                //             applyLatLngToLayer(d).y + ")";
+                //     });
+
+                // begend.attr("transform",
+                //     function (d) {
+                //         return "translate(" +
+                //             applyLatLngToLayer(d).x + "," +
+                //             applyLatLngToLayer(d).y + ")";
+                //     });
+
+                ptFeatures.attr("transform",
+                    function (d) {
+                        return "translate(" +
+                            applyLatLngToLayer(d).x + "," +
+                            applyLatLngToLayer(d).y + ")";
+                    });
+
+                marker.attr("transform",
+                    function () {
+                        var y = featuresdata[0].geometry.coordinates[1]
+                        var x = featuresdata[0].geometry.coordinates[0]
+                        return "translate(" +
+                            map.latLngToLayerPoint(new L.LatLng(y, x)).x + "," +
+                            map.latLngToLayerPoint(new L.LatLng(y, x)).y + ")";
+                    });
+
+                svg.attr("width", bottomRight[0] - topLeft[0] + 320)
+                    .attr("height", bottomRight[1] - topLeft[1] + 320)
+                    .style("left", topLeft[0] - 50 + "px")
+                    .style("top", topLeft[1] - 50 + "px");
+
+                linePath.attr("d", toLine)
+                g.attr("transform", "translate(" + (-topLeft[0] + 50) + "," + (-topLeft[1] + 50) + ")");
+
+            } // end reset
+
+            function transition() {
+                linePath.transition()
+                    .duration(15000)
+                    .attrTween("stroke-dasharray", tweenDash)
+                    .each('end', function () {
+                        // d3.select('#d' + regiment)
+                        // .attr("class", 'opacity')
+                        // .remove();
+                        // //fly map to end location
+                        // map.flyTo([49.43441055086234, -1.244582527044631], 11);
+
+
+                        // map.once('moveend', function () {
+                        //     d3.select('.lineConnect')
+                        //         .remove();
+                            // d3.select('#Saint-Martin-de-VarrevilleText')
+                            //     .remove();
+                            // d3.select('#Saint-Martin-de-Varreville')
+                            //     .remove();
+                            //load map and reference blue dots for actual drop zones
+                            // if (!map.hasLayer(maplayer)) {
+                            //     let imageUrl = 'img/101_drop_zone_modified.png',
+                            //         imageBounds = [
+                            //             [49.255048, -1.57559],
+                            //             [49.57615, -1.113130]
+                            //         ];
+                            //     maplayer = L.imageOverlay(imageUrl, imageBounds)
+                            //         .addTo(map);
+                            // }
+                            // var overlayMaps = {
+                            //     "Intelligence Map": maplayer
+                            // };
+                            // layerControls = L.control.layers(null, overlayMaps, {
+                            //     "collapsed": false
+                            // }).addTo(map).expand();
+
+                            // //enable slider
+                            // sliderui()
+
+                        // })
+                    })
+
+
+            } //end transition
+
+            function tweenDash() {
+                return function (t) {
+                    //total length of path (single value)
+                    var l = linePath.node().getTotalLength();
+                    interpolate = d3.interpolateString("0," + l, l + "," + l);
+                    var marker = d3.select("#d"+regiment);
+                    var p = linePath.node().getPointAtLength(t * l);
+
+                    marker.attr("transform", "translate(" + p.x + "," + p.y +
+                        ")"); //move marker
+                    return interpolate(t);
+                }
+            } //end tweenDash
+
+            function projectPoint(x, y) {
+                var point = map.latLngToLayerPoint(new L.LatLng(y, x));
+                this.stream.point(point.x, point.y);
+            } //end projectPoint
+        });
+
+    }
 
     function applyLatLngToLayer(d) {
         var y = d.geometry.coordinates[1]
@@ -660,8 +867,10 @@
         return map.latLngToLayerPoint(new L.LatLng(y, x))
     }
 
+    addToMap(url);
+
     $(document).on('click', '.btn', function () {
-        if (this.title == 'June 7') {
+        if (this.title == 'June 7th') {
             //clear map and refocus
             if (map.hasLayer(drops)) {
                 map.removeLayer(drops);
@@ -669,10 +878,10 @@
             //remove next day button as this will span 2 days up to the battle of Carentan
             d3.select('.btn').remove();
             //fly to St. Con-du-mont
-            map.flyTo([49.343262945996486, -1.2820529937744143], 12);
+            map.flyTo([49.33475481560422, -1.273214772369016], 13);
             //update content to describe troop movements
             d3.select('#content').text(
-                `The 501st failed to capture St. Come-du-Mont, one of it's D-day objectives so the consolidated 506th was brought up to capture and assault the town for it's vital highway connection to Carentan.  The 502nd covered the right flank and aided in encircling the city to prevent German forces from escaping.`
+                `The 501st failed to capture St. Come-du-Mont, one of it's D-day objectives so the consolidated 506th was brought up to capture and assault the town for it's vital highway connection to Carentan.  The 502nd covered the right flank and aided in encircling the city to prevent German forces from escaping.  The 327th Glider Infantry protected the left flank and was held in reserve.  The 506th encountered heavy resistance at the highway junction to the south at what is now called Dead Mans Corner.  By the end of June 7th`
             );
             L.DomUtil.remove(slider);
             sliderui2();
