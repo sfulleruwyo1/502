@@ -1,0 +1,386 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    background-image: url(../img/header.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-size: cover;
+}
+
+#map {
+    position: fixed;
+    top: 15vh;
+    left: 10vw;
+    bottom: 15vh;
+    width: 80%;
+}
+
+svg {
+    position: relative;
+}
+
+.waypoints {
+    fill: black;
+    opacity: 0;
+}
+}
+
+.drinks {
+    stroke: black;
+    fill: red;
+}
+
+.parachute {
+    cursor: pointer;
+}
+
+.lineConnect {
+    fill: none;
+    stroke: black;
+    opacity: 1;
+}
+
+.locnames {
+    fill: black;
+    text-shadow: 1px 1px 1px #FFF, 3px 3px 5px #000;
+    font-weight: bold;
+    font-size: 13px;
+    font-family: "Josefin Sans";
+}
+
+.opacity {
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -webkit-transition: opacity .5s ease-in-out;
+}
+
+.opacityIn {
+    opacity: 1;
+    transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -webkit-transition: opacity .5s ease-in-out;
+}
+
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255, 255, 255);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.center {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}
+
+.white {
+    color: white;
+    font-weight: bold;
+}
+
+.legend {
+    padding: 6px 8px;
+    font-size: 1em;
+    font-family: "Josefin Sans";
+    background-image: url(../img/document.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /* background: rgba(242, 223, 183); */
+    color: rgba(78, 71, 61, 1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    /* border-radius: 5px; */
+    width: 350px;
+}
+
+.legend h3 {
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: "Josefin Sans";
+    line-height: 1em;
+    color: rgba(78, 71, 61, 1);
+    margin: 0;
+    text-align: center;
+}
+
+.legend h3 span {
+    font-size: 1.3em;
+    font-family: "Josefin Sans";
+    margin: 0 20px 0 0;
+}
+
+.legend span {
+    width: 30px;
+    height: 20px;
+    float: left;
+    margin-right: 10px;
+}
+
+.legend ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 12px 4px 0;
+}
+
+.legend li {
+    height: 22px;
+}
+
+#ui-controls {
+    width: 250px;
+    padding: 8px 25px 8px 15px;
+    background-image: url(../img/document.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /* background: rgba(242, 223, 183); */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    /* border-radius: 5px; */
+    color: rgba(78, 71, 61, 1);
+}
+
+#ui-controls .min {
+    float: left;
+}
+
+#ui-controls .max {
+    float: right;
+    margin-right: -15px;
+}
+
+#ui-controls .time {
+    margin-right: -30px;
+    margin-left: 24px;
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: "Josefin Sans";
+}
+
+#ui-controls2 {
+    width: 250px;
+    padding: 8px 25px 8px 15px;
+    background-image: url(../img/document.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /* background: rgba(242, 223, 183); */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    /* border-radius: 5px; */
+    color: rgba(78, 71, 61, 1);
+}
+
+#ui-controls2 .min2 {
+    float: left;
+}
+
+#ui-controls2 .max2 {
+    float: right;
+    margin-right: -15px;
+}
+
+#ui-controls2 .time2 {
+    margin-right: -30px;
+    margin-left: 63px;
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: "Josefin Sans";
+}
+
+.year-slider {
+    width: 100%;
+    color: rgba(78, 71, 61, 1);
+}
+
+.year-slider2 {
+    width: 100%;
+    color: rgba(78, 71, 61, 1);
+}
+
+label {
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: "Josefin Sans";
+}
+
+.leaflet-control-layers-expanded {
+    padding: 6px 8px;
+    font-size: 1em;
+    font-family: "Josefin Sans";
+    background-image: url(../img/document.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /* background: rgba(242, 223, 183); */
+    color: rgba(78, 71, 61, 1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 0px;
+}
+
+.btn {
+    padding: 8px 25px 8px 25px;
+    background-image: url(../img/document.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /* background: rgba(242, 223, 183); */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-color: rgba(242, 223, 183);
+    /* border-radius: 5px; */
+    color: rgba(78, 71, 61, 1);
+    font-weight: bold;
+    font-family: "Josefin Sans";
+
+}
+
+.leaflet-popup-content {
+    font-family: "Josefin Sans";
+
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-content {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    color: rgba(78, 71, 61, 1);
+    background-image: url(../img/document.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /* background: rgba(242, 223, 183); */
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    color: rgba(78, 71, 61, 1);
+}
+
+input[type=range]::-webkit-slider-thumb {
+    cursor: pointer;
+    margin-top: -10px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: rgba(78, 71, 61, 1);
+    /* border-radius: 1.3px; */
+    border: 0.2px solid #010101;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: rgba(78, 71, 61, 1);
+}
+
+#map {
+    filter: sepia(20%);
+}
+
+.polaroid {
+    background-image: url(../img/photo_background.png);
+    /* background-color: rgba(238, 234, 234); */
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    position: relative;
+    right: 20px;
+    transform: rotate(-5deg);
+    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+
+.paperclip {
+    box-sizing: border-box;
+    display: block;
+    top: 52%;
+    left: 13px;
+    /* right: 50%; */
+    /* margin-top: -40px; */
+    margin-left: -19px;
+    height: 60px;
+    width: 18px;
+    border: 3px groove #DDDDDD;
+    border-radius: 0 0 90px 90px;
+    border-top: none;
+    position: absolute;
+    transform: rotate(-30deg);
+    -webkit-transform: rotate(-30deg);
+    -webkit-backface-visibility: hidden;
+}
+
+.paperclip::after {
+    content: '';
+    position: absolute;
+    border: 3px groove #DDDDDD;
+}
+
+.paperclip::after {
+    top: -15px;
+    left: -3px;
+    height: 15px;
+    width: 16px;
+    border-radius: 90px 90px 0 0;
+    border-bottom: none;
+}
+
+.paperclip2 {
+    box-sizing: border-box;
+    display: block;
+    top: 39%;
+    left: 13px;
+    /* right: 50%; */
+    /* margin-top: -40px; */
+    margin-left: -19px;
+    height: 60px;
+    width: 18px;
+    border: 3px groove #DDDDDD;
+    border-radius: 0 0 90px 90px;
+    border-top: none;
+    position: absolute;
+    transform: rotate(-30deg);
+    -webkit-transform: rotate(-30deg);
+    -webkit-backface-visibility: hidden;
+}
+
+.paperclip2::after {
+    content: '';
+    position: absolute;
+    border: 3px groove #DDDDDD;
+}
+
+.paperclip2::after {
+    top: -15px;
+    left: -3px;
+    height: 15px;
+    width: 16px;
+    border-radius: 90px 90px 0 0;
+    border-bottom: none;
+}

@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "d_day_objectives",
+"features": [
+{ "type": "Feature", "properties": { "id": 1, "name": "St. Martin-De-Varreville Coastal Battery" }, "geometry": { "type": "Point", "coordinates": [ -1.244582527044631, 49.426106018818537 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "WXYZ Baracks" }, "geometry": { "type": "Point", "coordinates": [ -1.254418187502317, 49.424963397778185 ] } },
+{ "type": "Feature", "properties": { "id": 3, "name": "Road Blocks Near Foucarville" }, "geometry": { "type": "Point", "coordinates": [ -1.259608261946174, 49.43612943390729 ] } },
+{ "type": "Feature", "properties": { "id": 4, "name": "Exit 3" }, "geometry": { "type": "Point", "coordinates": [ -1.2409282067895602, 49.408437106241045 ] } },
+{ "type": "Feature", "properties": { "id": 5, "name": "Exit 4" }, "geometry": { "type": "Point", "coordinates": [ -1.2476218017810405, 49.42817558930499 ] } }
+]
+}

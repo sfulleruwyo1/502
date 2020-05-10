@@ -1,0 +1,109 @@
+{
+    "type": "FeatureCollection",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+
+    "features": [{
+            "type": "Feature",
+            "properties": {
+                "latitude": 51.4779152,
+                "longitude": -1.5598918,
+                "time": 1,
+                "id": "route1",
+                "name": "RAF Membury/Greenham Common"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-1.5598918, 51.4779152]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "latitude": 49.4291471,
+                "longitude": -1.2542005,
+                "time": 2,
+                "id": "route1",
+                "name": "Southampton"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-1.4064174582089597, 50.90924924384114]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "latitude": 49.4291471,
+                "longitude": -1.2542005,
+                "time": 2,
+                "id": "route1",
+                "name": "Portland"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-2.436194072371625, 50.54816695298676]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "latitude": 49.4291471,
+                "longitude": -1.2542005,
+                "time": 2,
+                "id": "route1",
+                "name": "Channel Checkpoint 1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-2.9933900892894543, 49.81825000787074]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "latitude": 49.4291471,
+                "longitude": -1.2542005,
+                "time": 2,
+                "id": "route1",
+                "name": "Channel Checkpoint 2"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-1.888938463257164, 49.38169570538928]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "latitude": 49.4291471,
+                "longitude": -1.2542005,
+                "time": 2,
+                "id": "route1",
+                "name": "Channel Checkpoint 3"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-1.774975717761418, 49.37321337166297]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "latitude": 49.4291471,
+                "longitude": -1.2542005,
+                "time": 2,
+                "id": "route1",
+                "name": "Saint-Martin-de-Varreville"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-1.2692591313667048, 49.41542999998949]
+            }
+        }
+    ]
+}
