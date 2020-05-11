@@ -15,14 +15,12 @@
 { "type": "Feature", "properties": { "id": null, "regiment": 501 }, "geometry": { "type": "Point", "coordinates": [ -1.26297961374407, 49.345025852956837 ] } },
 { "type": "Feature", "properties": { "id": null, "regiment": 501 }, "geometry": { "type": "Point", "coordinates": [ -1.264071690887585, 49.338870509057024 ] } },
 { "type": "Feature", "properties": { "id": null, "regiment": 501 }, "geometry": { "type": "Point", "coordinates": [ -1.264071690887585, 49.333112284118485 ] } },
-{ "type": "Feature", "properties": { "id": null, "regiment": 501 }, "geometry": { "type": "Point", "coordinates": [ -1.268042880500368, 49.328942535025064 ] } },
 { "type": "Feature", "properties": { "id": null, "regiment": 327 }, "geometry": { "type": "Point", "coordinates": [ -1.223863396058157, 49.334899319444247 ] } },
 { "type": "Feature", "properties": { "id": null, "regiment": 506 }, "geometry": { "type": "Point", "coordinates": [ -1.244612861784948, 49.360314932966055 ] } },
 { "type": "Feature", "properties": { "id": null, "regiment": 506 }, "geometry": { "type": "Point", "coordinates": [ -1.252654520750834, 49.355648785171034 ] } },
 { "type": "Feature", "properties": { "id": null, "regiment": 506 }, "geometry": { "type": "Point", "coordinates": [ -1.259504822832885, 49.350982637376021 ] } },
 { "type": "Feature", "properties": { "id": null, "regiment": 506 }, "geometry": { "type": "Point", "coordinates": [ -1.263476012445668, 49.344628733995563 ] } },
 { "type": "Feature", "properties": { "id": null, "regiment": 506 }, "geometry": { "type": "Point", "coordinates": [ -1.264270250368224, 49.338572669836068 ] } },
-{ "type": "Feature", "properties": { "id": null, "regiment": 506 }, "geometry": { "type": "Point", "coordinates": [ -1.264270250368224, 49.332814444897537 ] } },
-{ "type": "Feature", "properties": { "id": null, "regiment": 506 }, "geometry": { "type": "Point", "coordinates": [ -1.268340719721327, 49.328743975544434 ] } }
+{ "type": "Feature", "properties": { "id": null, "regiment": 506 }, "geometry": { "type": "Point", "coordinates": [ -1.264270250368224, 49.332814444897537 ] } }
 ]
 }

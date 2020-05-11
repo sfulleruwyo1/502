@@ -441,17 +441,17 @@
         sliderControl.addTo(map);
         //load June 7th data
 
-        moveTroops("../data/american_7.geojson", "../img/airborne.PNG", 1, 2, 502)
-        moveTroops("../data/american_7.geojson", "../img/airborne.PNG", 1, 2, 501)
-        moveTroops("../data/american_7.geojson", "../img/airborne.PNG", 1, 2, 506)
-        moveTroops("../data/american_7.geojson", "../img/glider.PNG", 1, 2, 327)
+        moveTroops("../data/american_7.geojson", "../img/502nd.png", 1, 2, 502)
+        moveTroops("../data/american_7.geojson", "../img/501st.PNG", 1, 2, 501)
+        moveTroops("../data/american_7.geojson", "../img/506th.PNG", 1, 2, 506)
+        moveTroops("../data/american_7.geojson", "../img/327th.PNG", 1, 2, 327)
         moveTroops("../data/german_7.geojson", "../img/airborne.PNG", 1, 2, 6)
         moveTroops("../data/german_7.geojson", "../img/airborne.PNG", 1, 2, 1058)
         $("#range2").on("input change", function () { // when user changes
             let time = this.value; // update the year
             $(".time2").html(`June ${time}th`)
 
-            
+
         })
     }
 
@@ -538,7 +538,7 @@
                     return -10
                 })
 
-            
+
             map.on("viewreset", reset);
             map.on("zoom", reset);
 
@@ -703,10 +703,10 @@
                 .attr("id", "d" + regiment)
                 //.attr("class", "travelMarker")
                 .attr("xlink:href", symbol)
-                .attr("height", 25)
-                .attr("width", 25)
-                .attr("x", -10)
-                .attr("y", -10)
+                .attr("height", 100)
+                .attr("width", 100)
+                .attr("x", -50)
+                .attr("y", -50)
                 .attr("class", 'opacityIn');
 
             // Start and End destinations for styling
@@ -741,7 +741,7 @@
             //         return -10
             //     })
 
-            
+
             map.on("viewreset", reset);
             map.on("zoom", reset);
 
@@ -749,7 +749,6 @@
             transition();
 
             function reset() {
-                console.log('reset');
                 var bounds = d3path.bounds(collection),
                     topLeft = bounds[0],
                     bottomRight = bounds[1];
@@ -799,6 +798,7 @@
                     .duration(15000)
                     .attrTween("stroke-dasharray", tweenDash)
                     .each('end', function () {
+                        d3.select(this).call(transition); // infinite loop
                         // d3.select('#d' + regiment)
                         // .attr("class", 'opacity')
                         // .remove();
@@ -809,29 +809,29 @@
                         // map.once('moveend', function () {
                         //     d3.select('.lineConnect')
                         //         .remove();
-                            // d3.select('#Saint-Martin-de-VarrevilleText')
-                            //     .remove();
-                            // d3.select('#Saint-Martin-de-Varreville')
-                            //     .remove();
-                            //load map and reference blue dots for actual drop zones
-                            // if (!map.hasLayer(maplayer)) {
-                            //     let imageUrl = 'img/101_drop_zone_modified.png',
-                            //         imageBounds = [
-                            //             [49.255048, -1.57559],
-                            //             [49.57615, -1.113130]
-                            //         ];
-                            //     maplayer = L.imageOverlay(imageUrl, imageBounds)
-                            //         .addTo(map);
-                            // }
-                            // var overlayMaps = {
-                            //     "Intelligence Map": maplayer
-                            // };
-                            // layerControls = L.control.layers(null, overlayMaps, {
-                            //     "collapsed": false
-                            // }).addTo(map).expand();
+                        // d3.select('#Saint-Martin-de-VarrevilleText')
+                        //     .remove();
+                        // d3.select('#Saint-Martin-de-Varreville')
+                        //     .remove();
+                        //load map and reference blue dots for actual drop zones
+                        // if (!map.hasLayer(maplayer)) {
+                        //     let imageUrl = 'img/101_drop_zone_modified.png',
+                        //         imageBounds = [
+                        //             [49.255048, -1.57559],
+                        //             [49.57615, -1.113130]
+                        //         ];
+                        //     maplayer = L.imageOverlay(imageUrl, imageBounds)
+                        //         .addTo(map);
+                        // }
+                        // var overlayMaps = {
+                        //     "Intelligence Map": maplayer
+                        // };
+                        // layerControls = L.control.layers(null, overlayMaps, {
+                        //     "collapsed": false
+                        // }).addTo(map).expand();
 
-                            // //enable slider
-                            // sliderui()
+                        // //enable slider
+                        // sliderui()
 
                         // })
                     })
@@ -844,7 +844,7 @@
                     //total length of path (single value)
                     var l = linePath.node().getTotalLength();
                     interpolate = d3.interpolateString("0," + l, l + "," + l);
-                    var marker = d3.select("#d"+regiment);
+                    var marker = d3.select("#d" + regiment);
                     var p = linePath.node().getPointAtLength(t * l);
 
                     marker.attr("transform", "translate(" + p.x + "," + p.y +
@@ -881,7 +881,7 @@
             map.flyTo([49.33475481560422, -1.273214772369016], 13);
             //update content to describe troop movements
             d3.select('#content').text(
-                `The 501st failed to capture St. Come-du-Mont, one of it's D-day objectives so the consolidated 506th was brought up to capture and assault the town for it's vital highway connection to Carentan.  The 502nd covered the right flank and aided in encircling the city to prevent German forces from escaping.  The 327th Glider Infantry protected the left flank and was held in reserve.  The 506th encountered heavy resistance at the highway junction to the south at what is now called Dead Mans Corner.  By the end of June 7th`
+                `The 501st failed to capture St. Come-du-Mont, one of it's D-day objectives so the consolidated 506th was brought up, with the 501st behind, to capture and assault the town for it's vital highway connection to Carentan.  The 502nd covered the right flank and aided in encircling the city to prevent German forces from escaping.  The 327th Glider Infantry protected the left flank and was held in reserve.  The 506th encountered heavy resistance at the highway junction to the south at what is now called Dead Mans Corner.  By the end of June 7th 1/3 of the German 6th Paratrooper regiment surrendered but St. Come-du-Mont was still held by the Germans.`
             );
             L.DomUtil.remove(slider);
             sliderui2();
