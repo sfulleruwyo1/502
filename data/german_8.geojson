@@ -1,0 +1,17 @@
+{
+"type": "FeatureCollection",
+"name": "german_8",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 1, "regiment": "6" }, "geometry": { "type": "Point", "coordinates": [ -1.276001083246011, 49.326598533431621 ] } },
+{ "type": "Feature", "properties": { "id": 2, "regiment": "6" }, "geometry": { "type": "Point", "coordinates": [ -1.277877704039271, 49.32500624912219 ] } },
+{ "type": "Feature", "properties": { "id": 3, "regiment": "6" }, "geometry": { "type": "Point", "coordinates": [ -1.281915282109617, 49.322333486174216 ] } },
+{ "type": "Feature", "properties": { "id": 4, "regiment": "6" }, "geometry": { "type": "Point", "coordinates": [ -1.282370220483741, 49.319262652148879 ] } },
+{ "type": "Feature", "properties": { "id": 5, "regiment": "6" }, "geometry": { "type": "Point", "coordinates": [ -1.277024694587789, 49.315509410562363 ] } },
+{ "type": "Feature", "properties": { "id": 6, "regiment": "6" }, "geometry": { "type": "Point", "coordinates": [ -1.268096528995615, 49.310561955743772 ] } },
+{ "type": "Feature", "properties": { "id": 7, "regiment": "1058" }, "geometry": { "type": "Point", "coordinates": [ -1.268210263589146, 49.326939737212214 ] } },
+{ "type": "Feature", "properties": { "id": 8, "regiment": "1058" }, "geometry": { "type": "Point", "coordinates": [ -1.266219908202356, 49.322617822658046 ] } },
+{ "type": "Feature", "properties": { "id": 9, "regiment": "1058" }, "geometry": { "type": "Point", "coordinates": [ -1.262637268506133, 49.317840969729744 ] } },
+{ "type": "Feature", "properties": { "id": 10, "regiment": "1058" }, "geometry": { "type": "Point", "coordinates": [ -1.258599690435786, 49.313689657065872 ] } }
+]
+}

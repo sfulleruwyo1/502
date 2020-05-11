@@ -440,16 +440,105 @@
         // add the control to the map
         sliderControl.addTo(map);
         //load June 7th data
-
+        moveTroops("../data/german_7.geojson", "../img/6th.PNG", 1, 2, 6)
+        moveTroops("../data/german_7.geojson", "../img/1058th.PNG", 1, 2, 1058)
         moveTroops("../data/american_7.geojson", "../img/502nd.png", 1, 2, 502)
         moveTroops("../data/american_7.geojson", "../img/501st.PNG", 1, 2, 501)
         moveTroops("../data/american_7.geojson", "../img/506th.PNG", 1, 2, 506)
         moveTroops("../data/american_7.geojson", "../img/327th.PNG", 1, 2, 327)
-        moveTroops("../data/german_7.geojson", "../img/airborne.PNG", 1, 2, 6)
-        moveTroops("../data/german_7.geojson", "../img/airborne.PNG", 1, 2, 1058)
+
         $("#range2").on("input change", function () { // when user changes
             let time = this.value; // update the year
             $(".time2").html(`June ${time}th`)
+            if (time == 7) {
+                //attack on St Come-du-Mont
+                map.flyTo([49.33475481560422, -1.273214772369016], 13);
+                d3.select('#content').text(
+                    `The 501st failed to capture St. Come-du-Mont, one of it's D-day objectives so the consolidated 506th was brought up, with the 501st behind, to capture and assault the town for it's vital highway connection to Carentan.  The 502nd covered the right flank and aided in encircling the city to prevent German forces from escaping.  The 327th Glider Infantry protected the left flank and was held in reserve.  The 506th encountered heavy resistance at the highway junction to the south at what is now called Dead Mans Corner.  By the end of June 7th 1/3 of the German 6th Paratrooper regiment surrendered but St. Come-du-Mont was still held by the Germans.`
+                );
+                d3.select("#d6").remove();
+                d3.select("#d1058").remove();
+                d3.select("#d502").remove();
+                d3.select("#d501").remove();
+                d3.select("#d506").remove();
+                d3.select("#d327").remove();
+                moveTroops("../data/german_7.geojson", "../img/6th.PNG", 1, 2, 6)
+                moveTroops("../data/german_7.geojson", "../img/1058th.PNG", 1, 2, 1058)
+                moveTroops("../data/american_7.geojson", "../img/502nd.png", 1, 2, 502)
+                moveTroops("../data/american_7.geojson", "../img/501st.PNG", 1, 2, 501)
+                moveTroops("../data/american_7.geojson", "../img/506th.PNG", 1, 2, 506)
+                moveTroops("../data/american_7.geojson", "../img/327th.PNG", 1, 2, 327)
+
+            } else if (time == 8) {
+                //remove map markers
+                map.flyTo([49.33475481560422, -1.273214772369016], 13);
+                d3.select('#content').text(
+                    `The attack renewed at 04:45 on June 8th with a rolling artillery barrage, shifting every 4 minutes. 2,500 rounds of 105mm shells were fired in 90 minutes.  The 502nd remained to the right while the 506th, 501st and 327th assaulted the town. After an exhausting 60 hours of fighting the 506th and 501st captured the town and moved onto Carentan Highway to the south, establishing defensive positions that would repel counter attacks at 09:30 and 16:00.  The German 1058 continued to retreat without orders throughout the day, forcing the 6th FJR to pull back across the river and head to Carentan along the railroad embankment destroying 3 bridges and most of the rails along the way.`
+                );
+                d3.select("#d6").remove();
+                d3.select("#d1058").remove();
+                d3.select("#d502").remove();
+                d3.select("#d501").remove();
+                d3.select("#d506").remove();
+                d3.select("#d327").remove();
+                moveTroops("../data/german_8.geojson", "../img/6th.PNG", 1, 2, 6)
+                moveTroops("../data/german_8.geojson", "../img/1058th.PNG", 1, 2, 1058)
+                moveTroops("../data/american_8.geojson", "../img/502nd.png", 1, 2, 502)
+                moveTroops("../data/american_8.geojson", "../img/501st.PNG", 1, 2, 501)
+                moveTroops("../data/american_8.geojson", "../img/506th.PNG", 1, 2, 506)
+                moveTroops("../data/american_8.geojson", "../img/327th.PNG", 1, 2, 327)
+
+            } else if (time == 9) {
+                //remove map markers and reset map view to Carentan
+                //consolidation of troops and reinforcements from Utah beach
+                d3.select('#content').text(
+                    `The 101st finished consolidating all troops including and setup defensive positions on the Carentan highway with the 502nd on the right next to the Douve River, the 506th on the highway proper, and the 327th to the left near Brevands.  The 501st was held in reserve to the east of 327.  Aerial recon indicated Carentan was lightly defended, and a plan of double envelopment was devised to capture the town and merge the Utah and Omaho beach heads.  The 502nd was to capture the hills to the southwest of Carentan to prevent any German withdrawl.`
+                );
+                map.flyTo([49.303682080592395, -1.2464258521806684], 13);
+                d3.select("#d6").remove();
+                d3.select("#d1058").remove();
+                d3.select("#d502").remove();
+                d3.select("#d501").remove();
+                d3.select("#d506").remove();
+                d3.select("#d327").remove();
+
+            } else if (time == 10) {
+                //purple heart lane
+                d3.select("#d6").remove();
+                d3.select("#d1058").remove();
+                d3.select("#d502").remove();
+                d3.select("#d501").remove();
+                d3.select("#d506").remove();
+                d3.select("#d327").remove();
+
+            } else if (time == 11) {
+                //coles charge
+                d3.select("#d6").remove();
+                d3.select("#d1058").remove();
+                d3.select("#d502").remove();
+                d3.select("#d501").remove();
+                d3.select("#d506").remove();
+                d3.select("#d327").remove();
+
+            } else if (time == 12) {
+                //Carentan Captured
+                d3.select("#d6").remove();
+                d3.select("#d1058").remove();
+                d3.select("#d502").remove();
+                d3.select("#d501").remove();
+                d3.select("#d506").remove();
+                d3.select("#d327").remove();
+
+            } else {
+                //bloody gulch/counter attack
+                map.flyTo([49.292838509724255, -1.267718918639207], 13);
+                d3.select("#d6").remove();
+                d3.select("#d1058").remove();
+                d3.select("#d502").remove();
+                d3.select("#d501").remove();
+                d3.select("#d506").remove();
+                d3.select("#d327").remove();
+            }
 
 
         })
@@ -703,10 +792,10 @@
                 .attr("id", "d" + regiment)
                 //.attr("class", "travelMarker")
                 .attr("xlink:href", symbol)
-                .attr("height", 100)
-                .attr("width", 100)
-                .attr("x", -50)
-                .attr("y", -50)
+                .attr("height", 75)
+                .attr("width", 75)
+                .attr("x", -37.5)
+                .attr("y", -37.5)
                 .attr("class", 'opacityIn');
 
             // Start and End destinations for styling
