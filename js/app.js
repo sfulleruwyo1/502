@@ -440,12 +440,12 @@
         // add the control to the map
         sliderControl.addTo(map);
         //load June 7th data
-        moveTroops("../data/german_7.geojson", "../img/6th.PNG", 1, 2, 6)
-        moveTroops("../data/german_7.geojson", "../img/1058th.PNG", 1, 2, 1058)
-        moveTroops("../data/american_7.geojson", "../img/502nd.png", 1, 2, 502)
-        moveTroops("../data/american_7.geojson", "../img/501st.PNG", 1, 2, 501)
-        moveTroops("../data/american_7.geojson", "../img/506th.PNG", 1, 2, 506)
-        moveTroops("../data/american_7.geojson", "../img/327th.PNG", 1, 2, 327)
+        moveTroops("data/german_7.geojson", "../img/6th.PNG", 1, 2, 6)
+        moveTroops("data/german_7.geojson", "../img/1058th.PNG", 1, 2, 1058)
+        moveTroops("data/american_7.geojson", "../img/502nd.png", 1, 2, 502)
+        moveTroops("data/american_7.geojson", "../img/501st.PNG", 1, 2, 501)
+        moveTroops("data/american_7.geojson", "../img/506th.PNG", 1, 2, 506)
+        moveTroops("data/american_7.geojson", "../img/327th.PNG", 1, 2, 327)
 
         $("#range2").on("input change", function () { // when user changes
             let time = this.value; // update the year
@@ -462,12 +462,12 @@
                 d3.select("#d501").remove();
                 d3.select("#d506").remove();
                 d3.select("#d327").remove();
-                moveTroops("../data/german_7.geojson", "../img/6th.PNG", 1, 2, 6)
-                moveTroops("../data/german_7.geojson", "../img/1058th.PNG", 1, 2, 1058)
-                moveTroops("../data/american_7.geojson", "../img/502nd.png", 1, 2, 502)
-                moveTroops("../data/american_7.geojson", "../img/501st.PNG", 1, 2, 501)
-                moveTroops("../data/american_7.geojson", "../img/506th.PNG", 1, 2, 506)
-                moveTroops("../data/american_7.geojson", "../img/327th.PNG", 1, 2, 327)
+                moveTroops("data/german_7.geojson", "../img/6th.PNG", 1, 2, 6)
+                moveTroops("data/german_7.geojson", "../img/1058th.PNG", 1, 2, 1058)
+                moveTroops("data/american_7.geojson", "../img/502nd.png", 1, 2, 502)
+                moveTroops("data/american_7.geojson", "../img/501st.PNG", 1, 2, 501)
+                moveTroops("data/american_7.geojson", "../img/506th.PNG", 1, 2, 506)
+                moveTroops("data/american_7.geojson", "../img/327th.PNG", 1, 2, 327)
 
             } else if (time == 8) {
                 //remove map markers
@@ -481,12 +481,12 @@
                 d3.select("#d501").remove();
                 d3.select("#d506").remove();
                 d3.select("#d327").remove();
-                moveTroops("../data/german_8.geojson", "../img/6th.PNG", 1, 2, 6)
-                moveTroops("../data/german_8.geojson", "../img/1058th.PNG", 1, 2, 1058)
-                moveTroops("../data/american_8.geojson", "../img/502nd.png", 1, 2, 502)
-                moveTroops("../data/american_8.geojson", "../img/501st.PNG", 1, 2, 501)
-                moveTroops("../data/american_8.geojson", "../img/506th.PNG", 1, 2, 506)
-                moveTroops("../data/american_8.geojson", "../img/327th.PNG", 1, 2, 327)
+                moveTroops("data/german_8.geojson", "../img/6th.PNG", 1, 2, 6)
+                moveTroops("data/german_8.geojson", "../img/1058th.PNG", 1, 2, 1058)
+                moveTroops("data/american_8.geojson", "../img/502nd.png", 1, 2, 502)
+                moveTroops("data/american_8.geojson", "../img/501st.PNG", 1, 2, 501)
+                moveTroops("data/american_8.geojson", "../img/506th.PNG", 1, 2, 506)
+                moveTroops("data/american_8.geojson", "../img/327th.PNG", 1, 2, 327)
 
             } else if (time == 9) {
                 //remove map markers and reset map view to Carentan
