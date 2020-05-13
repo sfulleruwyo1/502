@@ -588,7 +588,7 @@
             var marker = g.append("image")
                 .attr("id", "marker")
                 //.attr("class", "travelMarker")
-                .attr("xlink:href", "/img/DC3_rotate_transparent.png")
+                .attr("xlink:href", "../img/DC3_rotate_transparent.png")
                 .attr("height", 150)
                 .attr("width", 150)
                 .attr("x", -75)
