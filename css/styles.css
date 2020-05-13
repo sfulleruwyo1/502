@@ -144,7 +144,7 @@ svg {
 #ui-controls {
     width: 250px;
     padding: 8px 25px 8px 15px;
-    background-image: url(../img/document.png);
+    background-image: url(img/document.PNG);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -175,7 +175,7 @@ svg {
 #ui-controls2 {
     width: 250px;
     padding: 8px 25px 8px 15px;
-    background-image: url(../img/document.png);
+    background-image: url(img/document.PNG);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -223,7 +223,7 @@ label {
     padding: 6px 8px;
     font-size: 1em;
     font-family: "Josefin Sans";
-    background-image: url(../img/document.png);
+    background-image: url(img/document.PNG);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -236,7 +236,7 @@ label {
 
 .btn {
     padding: 8px 25px 8px 25px;
-    background-image: url(../img/document.png);
+    background-image: url(img/document.PNG);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -266,7 +266,7 @@ label {
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
     color: rgba(78, 71, 61, 1);
-    background-image: url(../img/document.png);
+    background-image: url(img/document.PNG);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
