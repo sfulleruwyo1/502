@@ -8,6 +8,7 @@
     let elementCount = 0;
     let slider;
     let german_7;
+    let day = 6;
     let mapboxTiles = L.tileLayer(
         'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
             attribution: ''
@@ -440,15 +441,17 @@
         // add the control to the map
         sliderControl.addTo(map);
         //load June 7th data
-        moveTroops("data/german_7.geojson", "img/6th.png", 1, 2, 6)
-        moveTroops("data/german_7.geojson", "img/1058th.png", 1, 2, 1058)
-        moveTroops("data/american_7.geojson", "img/502nd.png", 1, 2, 502)
-        moveTroops("data/american_7.geojson", "img/501st.png", 1, 2, 501)
-        moveTroops("data/american_7.geojson", "img/506th.png", 1, 2, 506)
-        moveTroops("data/american_7.geojson", "img/327th.png", 1, 2, 327)
+        day = 7;
+        moveTroops("data/german_7.geojson", "img/6th.png", 1, 2, 6, 7)
+        moveTroops("data/german_7.geojson", "img/1058th.png", 1, 2, 1058, 7)
+        moveTroops("data/american_7.geojson", "img/502nd.png", 1, 2, 502, 7)
+        moveTroops("data/american_7.geojson", "img/501st.png", 1, 2, 501, 7)
+        moveTroops("data/american_7.geojson", "img/506th.png", 1, 2, 506, 7)
+        moveTroops("data/american_7.geojson", "img/327th.png", 1, 2, 327, 7)
 
         $("#range2").on("input change", function () { // when user changes
             let time = this.value; // update the year
+            day = time;
             $(".time2").html(`June ${time}th`)
             if (time == 7) {
                 //attack on St Come-du-Mont
@@ -462,12 +465,12 @@
                 d3.select("#d501").remove();
                 d3.select("#d506").remove();
                 d3.select("#d327").remove();
-                moveTroops("data/german_7.geojson", "img/6th.png", 1, 2, 6)
-                moveTroops("data/german_7.geojson", "img/1058th.png", 1, 2, 1058)
-                moveTroops("data/american_7.geojson", "img/502nd.png", 1, 2, 502)
-                moveTroops("data/american_7.geojson", "img/501st.png", 1, 2, 501)
-                moveTroops("data/american_7.geojson", "img/506th.png", 1, 2, 506)
-                moveTroops("data/american_7.geojson", "img/327th.png", 1, 2, 327)
+                moveTroops("data/german_7.geojson", "img/6th.png", 1, 2, 6, 7)
+                moveTroops("data/german_7.geojson", "img/1058th.png", 1, 2, 1058, 7)
+                moveTroops("data/american_7.geojson", "img/502nd.png", 1, 2, 502, 7)
+                moveTroops("data/american_7.geojson", "img/501st.png", 1, 2, 501, 7)
+                moveTroops("data/american_7.geojson", "img/506th.png", 1, 2, 506, 7)
+                moveTroops("data/american_7.geojson", "img/327th.png", 1, 2, 327, 7)
 
             } else if (time == 8) {
                 //remove map markers
@@ -481,12 +484,12 @@
                 d3.select("#d501").remove();
                 d3.select("#d506").remove();
                 d3.select("#d327").remove();
-                moveTroops("data/german_8.geojson", "img/6th.png", 1, 2, 6)
-                moveTroops("data/german_8.geojson", "img/1058th.png", 1, 2, 1058)
-                moveTroops("data/american_8.geojson", "img/502nd.png", 1, 2, 502)
-                moveTroops("data/american_8.geojson", "img/501st.png", 1, 2, 501)
-                moveTroops("data/american_8.geojson", "img/506th.png", 1, 2, 506)
-                moveTroops("data/american_8.geojson", "img/327th.png", 1, 2, 327)
+                moveTroops("data/german_8.geojson", "img/6th.png", 1, 2, 6,8)
+                moveTroops("data/german_8.geojson", "img/1058th.png", 1, 2, 1058, 8)
+                moveTroops("data/american_8.geojson", "img/502nd.png", 1, 2, 502, 8)
+                moveTroops("data/american_8.geojson", "img/501st.png", 1, 2, 501, 8)
+                moveTroops("data/american_8.geojson", "img/506th.png", 1, 2, 506, 8)
+                moveTroops("data/american_8.geojson", "img/327th.png", 1, 2, 327, 8)
 
             } else if (time == 9) {
                 //remove map markers and reset map view to Carentan
@@ -749,7 +752,7 @@
 
     }
 
-    function moveTroops(url, symbol, start, end, regiment) {
+    function moveTroops(url, symbol, start, end, regiment, moveDay) {
         let svg = d3.select(map.getPanes().overlayPane).append("svg");
 
         let g = svg.append("g").attr("class", "leaflet-zoom-hide");
@@ -801,36 +804,7 @@
             // Start and End destinations for styling
             var originANDdestination = [featuresdata[start], featuresdata[end]]
 
-            // var begend = g.selectAll(".drinks")
-            //     .data(originANDdestination)
-            //     .enter()
-            //     .append("image")
-            //     .attr("xlink:href", "../img/parachute.png")
-            //     .attr("id", function (d) {
-            //         return d.properties.name
-            //     })
-            //     .attr("class", "parachute")
-            //     .attr("height", 20)
-            //     .attr("width", 20)
-            //     .attr("x", -10)
-            //     .attr("y", -10);
-
-            // var text = g.selectAll("text")
-            //     .data(originANDdestination)
-            //     .enter()
-            //     .append("text")
-            //     .text(function (d) {
-            //         return d.properties.name
-            //     })
-            //     .attr("id", function (d) {
-            //         return d.properties.name + 'Text'
-            //     })
-            //     .attr("class", "locnames")
-            //     .attr("y", function (d) {
-            //         return -10
-            //     })
-
-
+        
             map.on("viewreset", reset);
             map.on("zoom", reset);
 
@@ -841,20 +815,6 @@
                 var bounds = d3path.bounds(collection),
                     topLeft = bounds[0],
                     bottomRight = bounds[1];
-
-                // text.attr("transform",
-                //     function (d) {
-                //         return "translate(" +
-                //             applyLatLngToLayer(d).x + "," +
-                //             applyLatLngToLayer(d).y + ")";
-                //     });
-
-                // begend.attr("transform",
-                //     function (d) {
-                //         return "translate(" +
-                //             applyLatLngToLayer(d).x + "," +
-                //             applyLatLngToLayer(d).y + ")";
-                //     });
 
                 ptFeatures.attr("transform",
                     function (d) {
@@ -887,43 +847,11 @@
                     .duration(15000)
                     .attrTween("stroke-dasharray", tweenDash)
                     .each('end', function () {
-                        d3.select(this).call(transition); // infinite loop
-                        // d3.select('#d' + regiment)
-                        // .attr("class", 'opacity')
-                        // .remove();
-                        // //fly map to end location
-                        // map.flyTo([49.43441055086234, -1.244582527044631], 11);
-
-
-                        // map.once('moveend', function () {
-                        //     d3.select('.lineConnect')
-                        //         .remove();
-                        // d3.select('#Saint-Martin-de-VarrevilleText')
-                        //     .remove();
-                        // d3.select('#Saint-Martin-de-Varreville')
-                        //     .remove();
-                        //load map and reference blue dots for actual drop zones
-                        // if (!map.hasLayer(maplayer)) {
-                        //     let imageUrl = 'img/101_drop_zone_modified.png',
-                        //         imageBounds = [
-                        //             [49.255048, -1.57559],
-                        //             [49.57615, -1.113130]
-                        //         ];
-                        //     maplayer = L.imageOverlay(imageUrl, imageBounds)
-                        //         .addTo(map);
-                        // }
-                        // var overlayMaps = {
-                        //     "Intelligence Map": maplayer
-                        // };
-                        // layerControls = L.control.layers(null, overlayMaps, {
-                        //     "collapsed": false
-                        // }).addTo(map).expand();
-
-                        // //enable slider
-                        // sliderui()
-
-                        // })
-                    })
+                        if(moveDay == day){
+                            d3.select(this).call(transition); // infinite loop
+                        }
+                        
+                     })
 
 
             } //end transition
@@ -960,6 +888,7 @@
 
     $(document).on('click', '.btn', function () {
         if (this.title == 'June 7th') {
+            day = 7;
             //clear map and refocus
             if (map.hasLayer(drops)) {
                 map.removeLayer(drops);
