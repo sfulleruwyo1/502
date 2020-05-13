@@ -545,7 +545,7 @@
     }
 
 
-    let url = '..data/points.geojson';
+    let url = 'data/points.geojson';
 
     function addToMap(url) {
         let svg = d3.select(map.getPanes().overlayPane).append("svg");
