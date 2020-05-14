@@ -9,10 +9,13 @@
     let slider;
     let german_7;
     let day = 6;
-    let mapboxTiles = L.tileLayer(
-        'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-            attribution: ''
-        });
+    var accessToken = 'pk.eyJ1Ijoic2Z1MjM0IiwiYSI6ImNrM29wM3phazFnMXIzanFxdGNuMG05ZzgifQ.AAYvpsqsW56C4GggaNdNrA';
+    let mapboxTiles = L.tileLayer(`https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=${accessToken}`, {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.light',
+        accessToken: accessToken
+    });
 
     map = L.map('map')
         .addLayer(mapboxTiles)
@@ -718,9 +721,9 @@
                         map.once('moveend', function () {
                             d3.select('.lineConnect')
                                 .remove();
-                            d3.select('#Saint-Martin-de-VarrevilleText')
+                            d3.selectAll('.parachute')
                                 .remove();
-                            d3.select('#Saint-Martin-de-Varreville')
+                            d3.selectAll('.locnames')
                                 .remove();
                             //load map and reference blue dots for actual drop zones
                             if (!map.hasLayer(maplayer)) {
@@ -824,7 +827,8 @@
                 .attr("class", 'opacityIn');
 
             // Start and End destinations for styling
-            var originANDdestination = [featuresdata[start], featuresdata[end]]
+            //var originANDdestination = [featuresdata[start], featuresdata[end]]
+
 
 
             map.on("viewreset", reset);

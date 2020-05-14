@@ -18,6 +18,11 @@ body {
     left: 10vw;
     bottom: 15vh;
     width: 80%;
+
+}
+
+.leaflet-tile {
+    filter: sepia(20%);
 }
 
 svg {
@@ -278,6 +283,16 @@ label {
     color: rgba(78, 71, 61, 1);
 }
 
+.leaflet-popup p {
+    font-family: "Josefin Sans";
+    font-size: 1.3em;
+}
+
+.leaflet-popup h3 {
+    font-size: 1.3em;
+    font-family: "Josefin Sans";
+}
+
 input[type=range]::-webkit-slider-thumb {
     cursor: pointer;
     margin-top: -10px;
@@ -297,10 +312,6 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     background: rgba(78, 71, 61, 1);
 }
 
-#map {
-    filter: sepia(20%);
-}
-
 .polaroid {
     background-image: url(../img/photo_background.png);
     /* background-color: rgba(238, 234, 234); */
@@ -312,15 +323,15 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     right: 20px;
     transform: rotate(-5deg);
     -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-	-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
 }
 
 
 .paperclip {
     box-sizing: border-box;
     display: block;
-    top: 52%;
+    top: 58%;
     left: 13px;
     /* right: 50%; */
     /* margin-top: -40px; */
@@ -354,7 +365,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 .paperclip2 {
     box-sizing: border-box;
     display: block;
-    top: 39%;
+    top: 46%;
     left: 13px;
     /* right: 50%; */
     /* margin-top: -40px; */
