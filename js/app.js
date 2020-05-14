@@ -484,7 +484,7 @@
                 d3.select("#d501").remove();
                 d3.select("#d506").remove();
                 d3.select("#d327").remove();
-                moveTroops("data/german_8.geojson", "img/6th.png", 1, 2, 6,8)
+                moveTroops("data/german_8.geojson", "img/6th.png", 1, 2, 6, 8)
                 moveTroops("data/german_8.geojson", "img/1058th.png", 1, 2, 1058, 8)
                 moveTroops("data/american_8.geojson", "img/502nd.png", 1, 2, 502, 8)
                 moveTroops("data/american_8.geojson", "img/501st.png", 1, 2, 501, 8)
@@ -495,7 +495,7 @@
                 //remove map markers and reset map view to Carentan
                 //consolidation of troops and reinforcements from Utah beach
                 d3.select('#content').text(
-                    `The 101st finished consolidating all troops including and setup defensive positions on the Carentan highway with the 502nd on the right next to the Douve River, the 506th on the highway proper, and the 327th to the left near Brevands.  The 501st was held in reserve to the east of 327.  Aerial recon indicated Carentan was lightly defended, and a plan of double envelopment was devised to capture the town and merge the Utah and Omaho beach heads.  The 502nd was to capture the hills to the southwest of Carentan to prevent any German withdrawl.`
+                    `The 101st finished consolidating all troops including and setup defensive positions on the Carentan highway with the 502nd on the right next to the Douve River, the 506th on the highway proper, and the 327th to the left near Brevands.  The 501st was held in reserve to the east of 327.  Aerial recon indicated Carentan was lightly defended, and a plan of double envelopment was devised to capture the town and merge the Utah and Omaho beach heads.  The 502nd was to capture the hills to the southwest of Carentan to prevent any German withdrawl.  The 6th FJR and 1058th had retreated to Carentan the previous day, but after losing the majority of it's forces over the last three days the 1058th was not considered combat effective, leaving the defense of Carental solely to the 6th FJR.  The 6th FJR was reinforced with 2 Ost Battalions made up of captured soviet soldiers pressed into service.  They had hoped to be reinforced by the 17th SS Panzer Grenadiers Regiment, but the 507th's misdrop on d-day had placed them directly between the 17th and Carentan greatly aiding the rest of the 101st in the assualt.`
                 );
                 map.flyTo([49.303682080592395, -1.2464258521806684], 13);
                 d3.select("#d6").remove();
@@ -504,18 +504,34 @@
                 d3.select("#d501").remove();
                 d3.select("#d506").remove();
                 d3.select("#d327").remove();
+                moveTroops("data/german_9.geojson", "img/6th.png", 1, 2, 6, 9)
+                moveTroops("data/american_9.geojson", "img/502nd.png", 1, 2, 502, 9)
+                moveTroops("data/american_9.geojson", "img/501st.png", 1, 2, 501, 9)
+                moveTroops("data/american_9.geojson", "img/506th.png", 1, 2, 506, 9)
+                moveTroops("data/american_9.geojson", "img/327th.png", 1, 2, 327, 9)
 
             } else if (time == 10) {
                 //purple heart lane
+                d3.select('#content').text(
+                    `The 502nd led the attack on June 10th under Lt. Col. Robert Cole.  As they traversed the Carentan-Sainte-Mere-Eglise highway they found Brdige #2 unrepaired and under attach from German 88mm howitzers.  Cole sent a small group accross the river in a small boat, where they made their way to the last bridge which was blocked by a Belgian gate (anti-tank blockade.)  They were only able to move it far enough to allow one soldier at a time to pass, however they soon came under mortar and machine gun fire from a large farmhouse to the southwest of the final bridge.  By noon the bridge was still not repaired so they used materials at hand to improvise a footbridge and began their attach after 13:00.  Moving single file, crouching and crawling, they reached bridge #4 at 16:00.  Under artillery, sniper, and machine gun fire as they approached Carentan, casualties became heavy.  At 23:00 the 502nd was strafed by 2 JU 87 Stukas killing 30 men, leading to this part of the highway being called Purple Heart Lane.  The 327th finished crossing the lower Douve river at 06:00 and captured Brevands.  From there they swung east and approached Carentan from the east, not encountering serious opposition until reaching the Vire-Taute Canal.`
+                );
                 d3.select("#d6").remove();
                 d3.select("#d1058").remove();
                 d3.select("#d502").remove();
                 d3.select("#d501").remove();
                 d3.select("#d506").remove();
                 d3.select("#d327").remove();
+                moveTroops("data/german_9.geojson", "img/6th.png", 1, 2, 6, 9)
+                moveTroops("data/american_9.geojson", "img/502nd.png", 1, 2, 502, 9)
+                moveTroops("data/american_9.geojson", "img/501st.png", 1, 2, 501, 9)
+                moveTroops("data/american_9.geojson", "img/506th.png", 1, 2, 506, 9)
+                moveTroops("data/american_9.geojson", "img/327th.png", 1, 2, 327, 9)
 
             } else if (time == 11) {
                 //coles charge
+                d3.select('#content').text(
+                    `As German fire subsided over night the 502nd moved the rest of its troops past the Belgian gate taking cover on both sides of the highway.  Scouts approached the farmhouse early in the morning, but were cut down by concentrated fire.  Lt. Col. Cole ordered artillary fire on the farmhouse, but the German fire did not subside.  at 06:15 using a smoke screen Lt. Col. Cole ordered a bayonette charge at the German positions.  The oposition was overwhelmed in close quarters combat which earned Lt. Col. Cole the Medal of Honor.  The rest of the 502nd was called up to reinforce Cole, but came under heavy mortar fire and was only able to add to Cole's defensive positions.  Repeated German counter attacks fell on the 502nd, with the final one at 18:30 nearly overwhelming the 3rd batallion.  Rolling artillery fire was called in, so close that many American troops were killed with friendly fire, but the Germans were finally pushed back.  The 327th crossed the canal via a footbridge, but as they advanced came under mortar fire and were pinned down a half mile short of Carentan.  The German 6th FRJ nearly out of ammunition withdrew during the night leaving only a small rear-guard within the city.`
+                );
                 d3.select("#d6").remove();
                 d3.select("#d1058").remove();
                 d3.select("#d502").remove();
@@ -525,6 +541,9 @@
 
             } else if (time == 12) {
                 //Carentan Captured
+                d3.select('#content').text(
+                    `On June 12th the 506th and 501st were brought in from their reserve positions to assist in the assault on Hill 30th just southwest of Carentan.  Their movements were covered under an all-night naval bombardmant.  At 02:00 the 506th moved down the highway passing through the 502nd's defensive positions, then cross country to the west capturing La Billonnerie at 05:00.  The 501st traveling to the east, passed the 327th, crossed the canal and reached Hill 30 by 06:30.  At 06:00 the 506th and 401st GIR 1st battalion attached to the 327th attacked Carentan capturing the city by 07:30.  By the afternoon the 506th and 501st began advancing southwest where they met heavy resistance from the 17th SS Panzergrenadiers and 6th FJR that had retreated from the city.  The Germans having the higher ground dug in and battled the Americans throughout the night.`
+                );
                 d3.select("#d6").remove();
                 d3.select("#d1058").remove();
                 d3.select("#d502").remove();
@@ -534,6 +553,9 @@
 
             } else {
                 //bloody gulch/counter attack
+                d3.select('#content').text(
+                    `At dawn just as the Americans were set to attack the German line, they came under heavy assualt from tanks and artillery.  The 17th Panzer and 6th FJR hit the 501st hard on the left flank causing them to retreat. The left flank of the 506th also began to collapse under heavy fire, prompting the immediate dismissal of the F company commander.  The 50snd took up positions to the right of the 506th but by 13:00 they had suffered massive casualties and were on the verge of collapse.  60 tanks from the 2nd Armored Division arrived just in time to prevent the 506th and 502nd from being overrun, inflicting severe casualites on the Germans forcing them to withdraw to the southwest.  The American victory at Carentan allowed Utah and Omaha beach to be linked creating a secure lodgement for further American operations in France.`
+                );
                 map.flyTo([49.292838509724255, -1.267718918639207], 13);
                 d3.select("#d6").remove();
                 d3.select("#d1058").remove();
@@ -804,7 +826,7 @@
             // Start and End destinations for styling
             var originANDdestination = [featuresdata[start], featuresdata[end]]
 
-        
+
             map.on("viewreset", reset);
             map.on("zoom", reset);
 
@@ -847,11 +869,11 @@
                     .duration(15000)
                     .attrTween("stroke-dasharray", tweenDash)
                     .each('end', function () {
-                        if(moveDay == day){
+                        if (moveDay == day) {
                             d3.select(this).call(transition); // infinite loop
                         }
-                        
-                     })
+
+                    })
 
 
             } //end transition
