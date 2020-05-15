@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "german_10",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "regiment": "6" }, "geometry": { "type": "Point", "coordinates": [ -1.24674656124428, 49.303340501465605 ] } }
+]
+}
