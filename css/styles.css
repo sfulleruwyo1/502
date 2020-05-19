@@ -395,3 +395,28 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     border-radius: 90px 90px 0 0;
     border-bottom: none;
 }
+
+h1 {
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px #000000;
+}
+
+h2 {
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px #000000;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col {
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+}

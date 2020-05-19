@@ -35,7 +35,13 @@
     legendControl.onAdd = function (map) {
 
         // create a new division element with class of 'legend' and return
-        const legend = L.DomUtil.create('div', 'legend');
+        let legend = L.DomUtil.create('div', 'legend');
+        // disable scrolling of map while using controls
+        L.DomEvent.disableScrollPropagation(legend);
+
+        // disable click events while using controls
+        L.DomEvent.disableClickPropagation(legend);
+
         return legend;
 
     };
@@ -43,14 +49,8 @@
     // add the legend control to the map
     legendControl.addTo(map);
 
-    // disable scrolling of map while using controls
-    L.DomEvent.disableScrollPropagation(legendControl);
-
-    // disable click events while using controls
-    L.DomEvent.disableClickPropagation(legendControl);
-
-    const legend = $('.legend').html(
-        "<h3>101st Airborne 502 PIR journey through Normandy</h3><div id = 'content' style = 'padding-top: 8px;'>June 6th 1944 The 502nd PIR left RAF Membury/Greenham Common for Drop Zone A, Southwest of Utah Beach in Nazi occupied Normandy.</div>"
+    legend = $('.legend').html(
+        "<h3 class = 'h3Time'>June 6th 00:00 Hours</h3><div id = 'content' style = 'padding-top: 8px;'>June 6th 1944 The 502nd PIR left RAF Membury/Greenham Common for Drop Zone A, Southwest of Utah Beach in Nazi occupied Normandy.</div>"
     );
 
     function addObjectiveMarkers() {
@@ -235,8 +235,10 @@
             };
             if (time < 10) {
                 $(".time").html(`June 6th 0${time}:00 Hours`)
+                $(".h3Time").html(`June 6th 0${time}:00 Hours`)
             } else {
                 $(".time").html(`June 6th ${time}:00 Hours`)
+                $("h3Time").html(`June 6th ${time}:00 Hours`)
             }
 
             if (time == 1) {
