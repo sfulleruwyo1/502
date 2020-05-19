@@ -455,6 +455,7 @@
             let time = this.value; // update the year
             day = time;
             $(".time2").html(`June ${time}th`)
+            $(".h3Time").html(`June ${time}th`)
             if (time == 7) {
                 //attack on St Come-du-Mont
                 map.flyTo([49.33475481560422, -1.273214772369016], 13);
