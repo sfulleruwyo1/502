@@ -1,0 +1,19 @@
+{
+"type": "FeatureCollection",
+"name": "american_13",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "regiment": "502" }, "geometry": { "type": "Point", "coordinates": [ -1.290629865677455, 49.298194515010877 ] } },
+{ "type": "Feature", "properties": { "regiment": "502" }, "geometry": { "type": "Point", "coordinates": [ -1.284740275300745, 49.298089767630891 ] } },
+{ "type": "Feature", "properties": { "regiment": "502" }, "geometry": { "type": "Point", "coordinates": [ -1.277297974733811, 49.298578586832832 ] } },
+{ "type": "Feature", "properties": { "regiment": "506" }, "geometry": { "type": "Point", "coordinates": [ -1.284365483185863, 49.289115582309805 ] } },
+{ "type": "Feature", "properties": { "regiment": "506" }, "geometry": { "type": "Point", "coordinates": [ -1.276923182618929, 49.290163239133882 ] } },
+{ "type": "Feature", "properties": { "regiment": "506" }, "geometry": { "type": "Point", "coordinates": [ -1.271943801664075, 49.292118799963042 ] } },
+{ "type": "Feature", "properties": { "regiment": "501" }, "geometry": { "type": "Point", "coordinates": [ -1.274139012622666, 49.280523975637855 ] } },
+{ "type": "Feature", "properties": { "regiment": "501" }, "geometry": { "type": "Point", "coordinates": [ -1.266054211287365, 49.285099367152121 ] } },
+{ "type": "Feature", "properties": { "regiment": "501" }, "geometry": { "type": "Point", "coordinates": [ -1.261717331100878, 49.289360037017524 ] } },
+{ "type": "Feature", "properties": { "regiment": "2" }, "geometry": { "type": "Point", "coordinates": [ -1.264769209750627, 49.29243307851462 ] } },
+{ "type": "Feature", "properties": { "regiment": "2" }, "geometry": { "type": "Point", "coordinates": [ -1.273228803200811, 49.288102828465135 ] } },
+{ "type": "Feature", "properties": { "regiment": "2" }, "geometry": { "type": "Point", "coordinates": [ -1.279064851846824, 49.284994591943416 ] } }
+]
+}

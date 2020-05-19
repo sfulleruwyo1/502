@@ -1,0 +1,17 @@
+{
+"type": "FeatureCollection",
+"name": "german_13",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "regiment": "17" }, "geometry": { "type": "Point", "coordinates": [ -1.311778849302914, 49.280908185145435 ] } },
+{ "type": "Feature", "properties": { "regiment": "17" }, "geometry": { "type": "Point", "coordinates": [ -1.299196542589033, 49.284854891318815 ] } },
+{ "type": "Feature", "properties": { "regiment": "17" }, "geometry": { "type": "Point", "coordinates": [ -1.293039243558836, 49.286810633915557 ] } },
+{ "type": "Feature", "properties": { "regiment": "6" }, "geometry": { "type": "Point", "coordinates": [ -1.297911541052297, 49.276052954023548 ] } },
+{ "type": "Feature", "properties": { "regiment": "6" }, "geometry": { "type": "Point", "coordinates": [ -1.289987364909086, 49.278987107674396 ] } },
+{ "type": "Feature", "properties": { "regiment": "6" }, "geometry": { "type": "Point", "coordinates": [ -1.285757568183994, 49.281257598985739 ] } },
+{ "type": "Feature", "properties": { "regiment": "17" }, "geometry": { "type": "Point", "coordinates": [ -1.293467577404415, 49.28604233401181 ] } },
+{ "type": "Feature", "properties": { "regiment": "17" }, "geometry": { "type": "Point", "coordinates": [ -1.300428002395073, 49.282165577150991 ] } },
+{ "type": "Feature", "properties": { "regiment": "6" }, "geometry": { "type": "Point", "coordinates": [ -1.285811109914692, 49.280244548661344 ] } },
+{ "type": "Feature", "properties": { "regiment": "6" }, "geometry": { "type": "Point", "coordinates": [ -1.289880281447692, 49.277939215694381 ] } }
+]
+}

@@ -1,0 +1,25 @@
+{
+"type": "FeatureCollection",
+"name": "american_10",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "regiment": "502" }, "geometry": { "type": "Point", "coordinates": [ -1.279182810972155, 49.326097940194245 ] } },
+{ "type": "Feature", "properties": { "regiment": "502" }, "geometry": { "type": "Point", "coordinates": [ -1.268795715216924, 49.325051049540804 ] } },
+{ "type": "Feature", "properties": { "regiment": "502" }, "geometry": { "type": "Point", "coordinates": [ -1.265476127913706, 49.321910244025752 ] } },
+{ "type": "Feature", "properties": { "regiment": "502" }, "geometry": { "type": "Point", "coordinates": [ -1.263334458685823, 49.318699435770611 ] } },
+{ "type": "Feature", "properties": { "regiment": "502" }, "geometry": { "type": "Point", "coordinates": [ -1.262564796307053, 49.318001406275066 ] } },
+{ "type": "Feature", "properties": { "regiment": "502" }, "geometry": { "type": "Point", "coordinates": [ -1.261778402137441, 49.317085227548333 ] } },
+{ "type": "Feature", "properties": { "regiment": "502" }, "geometry": { "type": "Point", "coordinates": [ -1.260647333076468, 49.315811274518303 ] } },
+{ "type": "Feature", "properties": { "regiment": "502" }, "geometry": { "type": "Point", "coordinates": [ -1.260279233677927, 49.315414248174989 ] } },
+{ "type": "Feature", "properties": { "regiment": "502" }, "geometry": { "type": "Point", "coordinates": [ -1.259743816370958, 49.314916869998328 ] } },
+{ "type": "Feature", "properties": { "regiment": "506" }, "geometry": { "type": "Point", "coordinates": [ -1.268417576743859, 49.326403279108582 ] } },
+{ "type": "Feature", "properties": { "regiment": "501" }, "geometry": { "type": "Point", "coordinates": [ -1.205131251060097, 49.328078247468149 ] } },
+{ "type": "Feature", "properties": { "regiment": "327" }, "geometry": { "type": "Point", "coordinates": [ -1.219159184502691, 49.327380350909948 ] } },
+{ "type": "Feature", "properties": { "regiment": "327" }, "geometry": { "type": "Point", "coordinates": [ -1.19046081684914, 49.330241663930337 ] } },
+{ "type": "Feature", "properties": { "regiment": "327" }, "geometry": { "type": "Point", "coordinates": [ -1.182014608831701, 49.315767645406304 ] } },
+{ "type": "Feature", "properties": { "regiment": "327" }, "geometry": { "type": "Point", "coordinates": [ -1.181265024601944, 49.308472314453908 ] } },
+{ "type": "Feature", "properties": { "regiment": "327" }, "geometry": { "type": "Point", "coordinates": [ -1.207179222259254, 49.305051165183322 ] } },
+{ "type": "Feature", "properties": { "regiment": "327" }, "geometry": { "type": "Point", "coordinates": [ -1.22168903127812, 49.30302629146977 ] } },
+{ "type": "Feature", "properties": { "regiment": "327" }, "geometry": { "type": "Point", "coordinates": [ -1.233628837223534, 49.302712079470389 ] } }
+]
+}
