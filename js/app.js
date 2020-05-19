@@ -6,6 +6,7 @@
     let highlight;
     let dropZone;
     let elementCount = 0;
+    let elementCount2 = 0;
     let slider;
     let german_7;
     let day = 6;
@@ -243,7 +244,7 @@
                 $(".h3Time").html(`June 6th 0${time}:00 Hours`)
             } else {
                 $(".time").html(`June 6th ${time}:00 Hours`)
-                $("h3Time").html(`June 6th ${time}:00 Hours`)
+                $(".h3Time").html(`June 6th ${time}:00 Hours`)
             }
 
             if (time == 1) {
@@ -450,6 +451,30 @@
 
         // add the control to the map
         sliderControl.addTo(map);
+
+        if (elementCount2 == 0) {
+            const dayControl = L.control({
+                position: 'bottomright'
+            });
+
+            // when the control is added to the map
+            dayControl.onAdd = function (map) {
+                const dayBtn = L.DomUtil.create('input', 'btn');
+                dayBtn.type = 'button';
+                dayBtn.title = 'June 6th';
+                dayBtn.value = 'Previous Day';
+                return dayBtn;
+            };
+
+            // add the button to the map
+            dayControl.addTo(map);
+
+            // disable click events while using controls
+            L.DomEvent.disableClickPropagation(dayControl);
+            elementCount2++;
+        }
+
+
         //load June 7th data
         day = 7;
         moveTroops("data/german_7.geojson", "img/6th.png", 1, 2, 6, 7)
@@ -1036,6 +1061,8 @@
             L.DomUtil.remove(slider);
             sliderui2();
 
+        } else {
+            location.reload();
         }
     });
 })();
