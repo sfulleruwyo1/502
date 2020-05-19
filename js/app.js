@@ -221,7 +221,15 @@
         sliderControl.addTo(map);
 
         $("#range").on("input change", function () { // when user changes
-            let time = this.value; // update the year
+            //let time = this.value; // update the year
+            let values = [1, 2, 6, 7, 8, 19]
+            let input = document.getElementById('range');
+
+            input.oninput = function () {
+                return values[this.value];
+            };
+            let time = input.oninput(); //set default value
+
             let style = {
                 radius: 10,
                 fillColor: "red",
@@ -654,7 +662,7 @@
                 moveTroops("data/american_13.geojson", "img/502nd.png", 1, 2, 502, 13)
                 moveTroops("data/american_13.geojson", "img/501st.png", 1, 2, 501, 13)
                 moveTroops("data/american_13.geojson", "img/506th.png", 1, 2, 506, 13)
-                
+
             }
 
 
