@@ -304,7 +304,7 @@
                 d3.select('#content').text(
                     'Lt. Col. Cassidy landed near St. Germain-de-Varreville and at 06:30 gathered a small force to assault the WXYZ complex containing a barracks of German soldiers that were previously manning the coastal battery.  Lt. Col. Cassidy along with 15 men killed or captured about 150 German soldiers.  Near the end of the raid Lt. Col. Michaelis arrived with an additional 200 men to link up with Cassidys men.'
                 );
-                map.flyTo([49.437314504327446, -1.254497969481392],
+                map.flyTo([49.44994457295905, -1.2495182552327977],
                     13);
                 if (map.hasLayer(objectives)) {
                     map.removeLayer(objectives)
@@ -324,7 +324,7 @@
                 }
 
                 highlight.bindPopup(
-                    `<h3>WXYZ Complex</h3><p>In 1944 farm building and Manoir at Mesieres had been pressed into service as a barracks complex for soldiers manning the nearby coastal battery.</p>`
+                    `<h3>WXYZ Complex</h3><p>In 1944 farm building and Manoir at Mesieres had been pressed into service as a barracks complex for soldiers manning the nearby coastal battery.</p><p>Sgt. Harrison Summers led the attack with 2 other soldiers clearing multiple buildings and singlehandeldy killing 30 German soldiers.  He was given a battle field commission, and nominated for the Medal of Honor for his actions.</p><div class = 'polaroid2'><img width = '570px' src = 'img/WXYZ.jpg'></div><div class="paperclip3"></div>`
                 );
                 highlight.openPopup();
             } else if (time == 7) {
@@ -451,6 +451,47 @@
 
         // add the control to the map
         sliderControl.addTo(map);
+
+        let unitLegend = L.control({
+            position: 'topright'
+        });
+
+        // when the control is added to the map
+        unitLegend.onAdd = (map) => {
+
+            // create a new division element with class of 'legend' and return
+            let legend = L.DomUtil.create('div', 'unitLegend');
+            // disable scrolling of map while using controls
+            L.DomEvent.disableScrollPropagation(legend);
+
+            // disable click events while using controls
+            L.DomEvent.disableClickPropagation(legend);
+
+            return legend;
+
+        };
+
+        // add the legend control to the map
+        unitLegend.addTo(map);
+        $('.unitLegend').html(`<ul class="tabs">
+    
+        <li class="tab">
+            <input type="radio" name="tabs" checked="checked" id="tab1" />
+            <label for="tab1">American Units</label>
+            <div id="tab-content1" class="content">
+            <div class = 'row'><div class = 'col'><img src = 'img/327th.png' height = '50px' width = '50px'>327th Glider Infantry Regiment</div><div class = 'col'><img src = 'img/501st.png' height = '50px' width = '50px'>501st Parachute Infantry Regiment</div><div class = 'col'><img src = 'img/502nd.png' height = '50px' width = '50px'>502nd Parachute Infantry Regiment</div><div class = 'col'><img src = 'img/506th.png' height = '50px' width = '50px'>506th Parachute Infantry Regiment</div><div class = 'col'><img src = 'img/sherman.PNG' height = '50px' width = '50px'>2nd Armored Division</div></div>
+            </div>
+        </li>
+        
+        <li class="tab">
+          <input type="radio" name="tabs" id="tab2" />
+          <label for="tab2">German Units</label>   
+          <div id="tab-content2" class="content">
+          <div class = 'row'><div class = 'col'><img src = 'img/6th.png' height = '50px' width = '50px'>6th Fallshirmjager Division(Parachute Infantry)</div><div class = 'col'><img src = 'img/1058th.png' height = '50px' width = '50px'>1058th Grenadier Regiment</div><div class = 'col'><img src = 'img/panzer.png' height = '50px' width = '50px'>17th Panzergrenadier Division</div></div>
+           </div>
+        </li>
+            
+      </ul>`)
 
         if (elementCount2 == 0) {
             const dayControl = L.control({
@@ -1030,14 +1071,13 @@
         return map.latLngToLayerPoint(new L.LatLng(y, x))
     }
 
-    //addToMap(url);
     const animateText = document.querySelector('.crawl');
 
     animateText.addEventListener('animationend', () => {
         $('.fade').fadeOut(500, () => {
             $(this).remove();
         });
-        $('.star-wars').remove();
+        $('.crawl-text').remove();
         $('#title').animate({
             opacity: 1
         }, 5000);
