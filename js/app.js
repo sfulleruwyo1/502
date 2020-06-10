@@ -17,7 +17,7 @@
 
     map = L.map('map')
         .addLayer(tiles)
-        .setView([49.41542647972486, -1.262730877610028], 7);
+        .setView([50.62246762810257, -1.538157657576358], 8);
 
     map.on('click', function (e) {
         console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
@@ -274,7 +274,7 @@
                 d3.select('#content').html(
                     `<p>Between 02:00 and 09:30 Lt Col Robert G. Cole assembled 75 men from the 101st and 82nd airborne to assault the coastal gun batteries.  They encountered one enemy convoy killing multiple Germans and taking 10 prisoners.  Upon reaching the outskirts of the gun battery they discovered that the battery had been dismantled and removed after an earlier air raid.</p>`
                 );
-                map.flyTo([49.43441055086234, -1.244582527044631],
+                map.flyTo([49.446709410674615, -1.2467761260109491],
                     13);
                 if (map.hasLayer(objectives)) {
                     map.removeLayer(objectives)
@@ -294,7 +294,7 @@
                 }
 
                 highlight.bindPopup(
-                    `<h3>Coastal Battery</h3><p>In 1943 four captured Russian 122mm howitzers were placed at this location to provide artillery support in case of an amphibious landing.</p><p>Unbeknownst to the 502nd they were damaged by Lancaster bombers on May 28th and relocated further southwest.</p><div class = 'polaroid'><img width = '270px' src = 'img/A-19_122mm.jpg'></div><div class="paperclip"></div>`
+                    `<h3>Coastal Battery</h3><p>In 1943 four captured Russian 122mm howitzers were placed at this location to provide artillery support in case of an amphibious landing.</p><p>Unbeknownst to the 502nd they were damaged by Lancaster bombers on May 28th and relocated further southwest.</p><div class = 'polaroid'><img width = '570px' src = 'img/A-19_122mm.jpg'></div><div class="paperclip"></div>`
                 );
                 highlight.openPopup();
 
@@ -379,7 +379,7 @@
                 }
 
                 highlight.bindPopup(
-                    `<h3>Exit 3</h3><p>The Aerial photo below shows the entire area behind the causway and west of Utah Beach flooded prior to the airborne assault.</p><div class = 'polaroid'><img width = '270px'src = 'img/causeway.jpg'></div><div class="paperclip2"></div>`
+                    `<h3>Exit 3</h3><p>The Aerial photo below shows the entire area behind the causway and west of Utah Beach flooded prior to the airborne assault.</p><div class = 'polaroid'><img width = '570px'src = 'img/causeway.jpg'></div><div class="paperclip2"></div>`
                 );
                 highlight.openPopup();
 
@@ -834,7 +834,7 @@
 
             function transition() {
                 linePath.transition()
-                    .duration(10000)
+                    .duration(15000)
                     .attrTween("stroke-dasharray", tweenDash)
                     .each('end', function () {
                         d3.select('#marker')
@@ -1035,7 +1035,24 @@
         return map.latLngToLayerPoint(new L.LatLng(y, x))
     }
 
-    addToMap(url);
+    //addToMap(url);
+    const animateText = document.querySelector('.crawl');
+
+    animateText.addEventListener('animationend', () => {
+        $('.fade').fadeOut(500, () => {
+            $(this).remove();
+        });
+        $('.star-wars').remove();
+        $('#title').animate({
+            opacity: 1
+        }, 5000);
+        $('#map').animate({
+            opacity: 1
+        }, 3000, () => {
+            addToMap(url);
+        });
+
+    });
 
     $(document).on('click', '.btn', function () {
         if (this.title == 'June 7th') {
