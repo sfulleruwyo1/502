@@ -656,7 +656,7 @@
                 d3.select("#d6_3").remove();
                 d3.select("#d2").remove();
                 moveTroops("data/german_12.geojson", "img/6th.png", 1, 2, 6, 12)
-                moveTroops("data/german_12.geojson", "img/6th.png", 1, 2, 17, 12)
+                moveTroops("data/german_12.geojson", "img/panzer.png", 1, 2, 17, 12)
                 moveTroops("data/american_12.geojson", "img/502nd.png", 1, 2, 502, 12)
                 moveTroops("data/american_12.geojson", "img/501st.png", 1, 2, 501, 12)
                 moveTroops("data/american_12.geojson", "img/506th.png", 1, 2, 506, 12)
@@ -686,7 +686,7 @@
                 d3.select("#d2").remove();
                 moveTroops("data/american_13.geojson", "img/sherman.PNG", 1, 2, 2, 13)
                 moveTroops("data/german_13.geojson", "img/6th.png", 1, 2, 6, 13)
-                moveTroops("data/german_13.geojson", "img/6th.png", 1, 2, 17, 13)
+                moveTroops("data/german_13.geojson", "img/panzer.png", 1, 2, 17, 13)
                 moveTroops("data/american_13.geojson", "img/502nd.png", 1, 2, 502, 13)
                 moveTroops("data/american_13.geojson", "img/501st.png", 1, 2, 501, 13)
                 moveTroops("data/american_13.geojson", "img/506th.png", 1, 2, 506, 13)
@@ -706,17 +706,17 @@
         let g = svg.append("g").attr("class", "leaflet-zoom-hide");
 
         d3.json(url, function (collection) {
-            var featuresdata = collection.features.filter(function (d) {
+            let featuresdata = collection.features.filter(function (d) {
                 return d.properties.id == "route1"
             })
 
-            var transform = d3.geo.transform({
+            let transform = d3.geo.transform({
                 point: projectPoint
             });
 
-            var d3path = d3.geo.path().projection(transform);
+            let d3path = d3.geo.path().projection(transform);
 
-            var toLine = d3.svg.line()
+            let toLine = d3.svg.line()
                 .interpolate("linear")
                 .x(function (d) {
                     return applyLatLngToLayer(d).x
@@ -725,20 +725,20 @@
                     return applyLatLngToLayer(d).y
                 });
 
-            var ptFeatures = g.selectAll("circle")
+            let ptFeatures = g.selectAll("circle")
                 .data(featuresdata)
                 .enter()
                 .append("circle")
                 .attr("r", 3)
                 .attr("class", "waypoints");
 
-            var linePath = g.selectAll(".lineConnect")
+            let linePath = g.selectAll(".lineConnect")
                 .data([featuresdata])
                 .enter()
                 .append("path")
                 .attr("class", "lineConnect");
 
-            var marker = g.append("image")
+            let marker = g.append("image")
                 .attr("id", "marker")
                 //.attr("class", "travelMarker")
                 .attr("xlink:href", "img/DC3_rotate_transparent.png")
@@ -749,9 +749,9 @@
                 .attr("class", 'opacityIn');
 
             // Start and End destinations for styling
-            var originANDdestination = [featuresdata[0], featuresdata[6]]
+            let originANDdestination = [featuresdata[0], featuresdata[6]]
 
-            var begend = g.selectAll(".drinks")
+            let begend = g.selectAll(".drinks")
                 .data(originANDdestination)
                 .enter()
                 .append("image")
@@ -765,7 +765,7 @@
                 .attr("x", -10)
                 .attr("y", -10);
 
-            var text = g.selectAll("text")
+            let text = g.selectAll("text")
                 .data(originANDdestination)
                 .enter()
                 .append("text")
@@ -788,7 +788,7 @@
             transition();
 
             function reset() {
-                var bounds = d3path.bounds(collection),
+                let bounds = d3path.bounds(collection),
                     topLeft = bounds[0],
                     bottomRight = bounds[1];
 
@@ -815,8 +815,8 @@
 
                 marker.attr("transform",
                     function () {
-                        var y = featuresdata[0].geometry.coordinates[1]
-                        var x = featuresdata[0].geometry.coordinates[0]
+                        let y = featuresdata[0].geometry.coordinates[1]
+                        let x = featuresdata[0].geometry.coordinates[0]
                         return "translate(" +
                             map.latLngToLayerPoint(new L.LatLng(y, x)).x + "," +
                             map.latLngToLayerPoint(new L.LatLng(y, x)).y + ")";
@@ -860,7 +860,7 @@
                                 maplayer = L.imageOverlay(imageUrl, imageBounds)
                                     .addTo(map);
                             }
-                            var overlayMaps = {
+                            let overlayMaps = {
                                 "Intelligence Map": maplayer
                             };
                             layerControls = L.control.layers(null, overlayMaps, {
@@ -879,15 +879,15 @@
             function tweenDash() {
                 return function (t) {
                     //total length of path (single value)
-                    var l = linePath.node().getTotalLength();
+                    let l = linePath.node().getTotalLength();
                     interpolate = d3.interpolateString("0," + l, l + "," + l);
-                    var marker = d3.select("#marker");
-                    var p = linePath.node().getPointAtLength(t * l);
-                    var t2 = Math.min(t + 0.05, 1);
-                    var p2 = linePath.node().getPointAtLength(t2 * l);
-                    var x = p2.x - p.x;
-                    var y = p2.y - p.y;
-                    var r = 90 - Math.atan2(-y, x) * 180 / Math.PI;
+                    let marker = d3.select("#marker");
+                    let p = linePath.node().getPointAtLength(t * l);
+                    let t2 = Math.min(t + 0.05, 1);
+                    let p2 = linePath.node().getPointAtLength(t2 * l);
+                    let x = p2.x - p.x;
+                    let y = p2.y - p.y;
+                    let r = 90 - Math.atan2(-y, x) * 180 / Math.PI;
                     marker.attr("transform", "translate(" + p.x + "," + p.y +
                         ") rotate(" + r + ")"); //move marker
                     return interpolate(t);
@@ -895,7 +895,7 @@
             } //end tweenDash
 
             function projectPoint(x, y) {
-                var point = map.latLngToLayerPoint(new L.LatLng(y, x));
+                let point = map.latLngToLayerPoint(new L.LatLng(y, x));
                 this.stream.point(point.x, point.y);
             } //end projectPoint
         });
@@ -908,17 +908,17 @@
         let g = svg.append("g").attr("class", "leaflet-zoom-hide");
 
         d3.json(url, function (collection) {
-            var featuresdata = collection.features.filter(function (d) {
+            let featuresdata = collection.features.filter(function (d) {
                 return d.properties.regiment == regiment
             })
 
-            var transform = d3.geo.transform({
+            let transform = d3.geo.transform({
                 point: projectPoint
             });
 
-            var d3path = d3.geo.path().projection(transform);
+            let d3path = d3.geo.path().projection(transform);
 
-            var toLine = d3.svg.line()
+            let toLine = d3.svg.line()
                 .interpolate("linear")
                 .x(function (d) {
                     return applyLatLngToLayer(d).x
@@ -927,33 +927,28 @@
                     return applyLatLngToLayer(d).y
                 });
 
-            var ptFeatures = g.selectAll("circle")
+            let ptFeatures = g.selectAll("circle")
                 .data(featuresdata)
                 .enter()
                 .append("circle")
                 .attr("r", 3)
                 .attr("class", "waypoints");
 
-            var linePath = g.selectAll(".lineConnect")
+            let linePath = g.selectAll(".lineConnect")
                 .data([featuresdata])
                 .enter()
                 .append("path")
                 .attr("class", "lineConnect")
                 .attr("class", 'opacity');
 
-            var marker = g.append("image")
+            let marker = g.append("image")
                 .attr("id", "d" + regiment)
-                //.attr("class", "travelMarker")
                 .attr("xlink:href", symbol)
                 .attr("height", 75)
                 .attr("width", 75)
                 .attr("x", -37.5)
                 .attr("y", -37.5)
                 .attr("class", 'opacityIn');
-
-            // Start and End destinations for styling
-            //var originANDdestination = [featuresdata[start], featuresdata[end]]
-
 
 
             map.on("viewreset", reset);
@@ -963,7 +958,7 @@
             transition();
 
             function reset() {
-                var bounds = d3path.bounds(collection),
+                let bounds = d3path.bounds(collection),
                     topLeft = bounds[0],
                     bottomRight = bounds[1];
 
@@ -976,8 +971,8 @@
 
                 marker.attr("transform",
                     function () {
-                        var y = featuresdata[0].geometry.coordinates[1]
-                        var x = featuresdata[0].geometry.coordinates[0]
+                        let y = featuresdata[0].geometry.coordinates[1]
+                        let x = featuresdata[0].geometry.coordinates[0]
                         return "translate(" +
                             map.latLngToLayerPoint(new L.LatLng(y, x)).x + "," +
                             map.latLngToLayerPoint(new L.LatLng(y, x)).y + ")";
@@ -1010,10 +1005,10 @@
             function tweenDash() {
                 return function (t) {
                     //total length of path (single value)
-                    var l = linePath.node().getTotalLength();
+                    let l = linePath.node().getTotalLength();
                     interpolate = d3.interpolateString("0," + l, l + "," + l);
-                    var marker = d3.select("#d" + regiment);
-                    var p = linePath.node().getPointAtLength(t * l);
+                    let marker = d3.select("#d" + regiment);
+                    let p = linePath.node().getPointAtLength(t * l);
 
                     marker.attr("transform", "translate(" + p.x + "," + p.y +
                         ")"); //move marker
@@ -1022,7 +1017,7 @@
             } //end tweenDash
 
             function projectPoint(x, y) {
-                var point = map.latLngToLayerPoint(new L.LatLng(y, x));
+                let point = map.latLngToLayerPoint(new L.LatLng(y, x));
                 this.stream.point(point.x, point.y);
             } //end projectPoint
         });
@@ -1030,8 +1025,8 @@
     }
 
     function applyLatLngToLayer(d) {
-        var y = d.geometry.coordinates[1]
-        var x = d.geometry.coordinates[0]
+        let y = d.geometry.coordinates[1]
+        let x = d.geometry.coordinates[0]
         return map.latLngToLayerPoint(new L.LatLng(y, x))
     }
 
@@ -1082,4 +1077,6 @@
             location.reload();
         }
     });
+
+    $(document).on('mouseover')
 })();
