@@ -30,15 +30,15 @@ body {
 #map {
     position: fixed;
     top: 15vh;
-    left: 10vw;
-    bottom: 15vh;
-    width: 80%;
+    left: 5vw;
+    bottom: 4vh;
+    width: 90%;
     opacity: 0.0;
 
 }
 
 .leaflet-tile {
-    filter: sepia(20%);
+    filter: sepia(40%);
 }
 
 svg {
@@ -162,6 +162,10 @@ svg {
     height: 22px;
 }
 
+/* .tabs .tab img {
+    cursor: pointer;
+} */
+
 
 /* styling for tabs */
 .tabs {
@@ -212,8 +216,8 @@ svg {
     z-index: 0;
     /* or display: none; */
     overflow: hidden;
-    width: 600px;
-    padding: 25px;
+    /* width: 600px; */
+    padding: 10px;
     position: absolute;
     top: 27px;
     left: 0;
@@ -224,7 +228,7 @@ svg {
     background-size: cover;
     color: rgba(78, 71, 61, 1);
     font-family: "Josefin Sans";
-    font-size: 1.2em;
+    font-size: 1em;
     opacity: 0;
     transition: opacity 400ms ease-out;
     text-align: center;

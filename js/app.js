@@ -15,9 +15,9 @@
             attribution: ''
         });
 
-    map = L.map('map')
+    map = L.map('map', { zoomControl: false })
         .addLayer(tiles)
-        .setView([50.62246762810257, -1.538157657576358], 8);
+        .setView([50.62246762810257, -1.538157657576358], 7);
 
     map.on('click', function (e) {
         console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
@@ -275,7 +275,7 @@
                     `<p>Between 02:00 and 09:30 Lt Col Robert G. Cole assembled 75 men from the 101st and 82nd airborne to assault the coastal gun batteries.  They encountered one enemy convoy killing multiple Germans and taking 10 prisoners.  Upon reaching the outskirts of the gun battery they discovered that the battery had been dismantled and removed after an earlier air raid.</p>`
                 );
                 map.flyTo([49.446709410674615, -1.2467761260109491],
-                    13);
+                    12);
                 if (map.hasLayer(objectives)) {
                     map.removeLayer(objectives)
                 }
@@ -305,7 +305,7 @@
                     'Lt. Col. Cassidy landed near St. Germain-de-Varreville and at 06:30 gathered a small force to assault the WXYZ complex containing a barracks of German soldiers that were previously manning the coastal battery.  Lt. Col. Cassidy along with 15 men killed or captured about 150 German soldiers.  Near the end of the raid Lt. Col. Michaelis arrived with an additional 200 men to link up with Cassidys men.'
                 );
                 map.flyTo([49.44994457295905, -1.2495182552327977],
-                    13);
+                    12);
                 if (map.hasLayer(objectives)) {
                     map.removeLayer(objectives)
                 }
@@ -332,7 +332,7 @@
                     'After capturing the WXYZ complex a defensive line was established near Foucarville'
                 );
                 map.flyTo([49.43612943390729, -1.259608261946174],
-                    13);
+                    12);
                 if (map.hasLayer(objectives)) {
                     map.removeLayer(objectives)
                 }
@@ -360,7 +360,7 @@
                     'At 07:30 Lt. Col. Cole had captured Exit 3 and 4 along the causeway, however Exit 4 was covered by German artillary fire. Coles forces set an ambush for any German forces retreating through Exit 3 and 4.  An estimated 75 Germans were killed as they retreated up the exits.'
                 );
                 map.flyTo([49.418442985071856, -1.241967180742152],
-                    13);
+                    12);
                 if (map.hasLayer(objectives)) {
                     map.removeLayer(objectives)
                 }
@@ -479,7 +479,7 @@
             <input type="radio" name="tabs" checked="checked" id="tab1" />
             <label for="tab1">American Units</label>
             <div id="tab-content1" class="content">
-            <div class = 'row'><div class = 'col'><img src = 'img/327th.png' height = '50px' width = '50px'>327th Glider Infantry Regiment</div><div class = 'col'><img src = 'img/501st.png' height = '50px' width = '50px'>501st Parachute Infantry Regiment</div><div class = 'col'><img src = 'img/502nd.png' height = '50px' width = '50px'>502nd Parachute Infantry Regiment</div><div class = 'col'><img src = 'img/506th.png' height = '50px' width = '50px'>506th Parachute Infantry Regiment</div><div class = 'col'><img src = 'img/sherman.PNG' height = '50px' width = '50px'>2nd Armored Division</div></div>
+            <div class = 'row'><div class = 'col'><img src = 'img/327th.png' height = '50px' width = '50px'><br>327th Glider Infantry Regiment</div><div class = 'col'><img src = 'img/501st.png' height = '50px' width = '50px'><br>501st Parachute Infantry Regiment</div><div class = 'col'><img src = 'img/502nd.png' height = '50px' width = '50px'><br>502nd Parachute Infantry Regiment</div><div class = 'col'><img src = 'img/506th.png' height = '50px' width = '50px'><br>506th Parachute Infantry Regiment</div><div class = 'col'><img src = 'img/sherman.PNG' height = '50px' width = '50px'><br>2nd Armored Division</div></div>
             </div>
         </li>
         
@@ -487,7 +487,7 @@
           <input type="radio" name="tabs" id="tab2" />
           <label for="tab2">German Units</label>   
           <div id="tab-content2" class="content">
-          <div class = 'row'><div class = 'col'><img src = 'img/6th.png' height = '50px' width = '50px'>6th Fallshirmjager Division(Parachute Infantry)</div><div class = 'col'><img src = 'img/1058th.png' height = '50px' width = '50px'>1058th Grenadier Regiment</div><div class = 'col'><img src = 'img/panzer.png' height = '50px' width = '50px'>17th Panzergrenadier Division</div></div>
+          <div class = 'row'><div class = 'col'><img src = 'img/6th.png' height = '50px' width = '50px'><br>6th Fallshirmjager Division(Parachute Infantry)</div><div class = 'col'><img src = 'img/1058th.png' height = '50px' width = '50px'><br>1058th Grenadier Regiment</div><div class = 'col'><img src = 'img/panzer.png' height = '50px' width = '50px'><br>17th Panzergrenadier Division</div></div>
            </div>
         </li>
             
@@ -532,7 +532,7 @@
             $(".h3Time").html(`June ${time}th`)
             if (time == 7) {
                 //attack on St Come-du-Mont
-                map.flyTo([49.33475481560422, -1.273214772369016], 13);
+                map.flyTo([49.352251420906114, -1.2465870983165919], 13);
                 d3.select('#content').text(
                     `The 501st failed to capture St. Come-du-Mont, one of it's D-day objectives so the consolidated 506th was brought up, with the 501st behind, to capture and assault the town for it's vital highway connection to Carentan.  The 502nd covered the right flank and aided in encircling the city to prevent German forces from escaping.  The 327th Glider Infantry protected the left flank and was held in reserve.  The 506th encountered heavy resistance at the highway junction to the south at what is now called Dead Mans Corner.  By the end of June 7th 1/3 of the German 6th Paratrooper regiment surrendered but St. Come-du-Mont was still held by the Germans.`
                 );
@@ -594,7 +594,7 @@
                 d3.select('#content').text(
                     `The 101st finished consolidating all troops including and setup defensive positions on the Carentan highway with the 502nd on the right next to the Douve River, the 506th on the highway proper, and the 327th to the left near Brevands.  The 501st was held in reserve to the east of 327.  Aerial recon indicated Carentan was lightly defended, and a plan of double envelopment was devised to capture the town and merge the Utah and Omaho beach heads.  The 502nd was to capture the hills to the southwest of Carentan to prevent any German withdrawl.  The 6th FJR and 1058th had retreated to Carentan the previous day, but after losing the majority of it's forces over the last three days the 1058th was not considered combat effective, leaving the defense of Carental solely to the 6th FJR.  The 6th FJR was reinforced with 2 Ost Battalions made up of captured soviet soldiers pressed into service.  They had hoped to be reinforced by the 17th SS Panzer Grenadiers Regiment, but the 507th's misdrop on d-day had placed them directly between the 17th and Carentan greatly aiding the rest of the 101st in the assualt.`
                 );
-                map.flyTo([49.303682080592395, -1.2464258521806684], 13);
+                map.flyTo([49.323840104547486, -1.2503789332765927], 13);
                 d3.select("#d6").remove();
                 d3.select("#d17").remove();
                 d3.select("#d1058").remove();
@@ -649,7 +649,7 @@
                 d3.select('#content').text(
                     `As German fire subsided over night the 502nd moved the rest of its troops past the Belgian gate taking cover on both sides of the highway.  Scouts approached the farmhouse early in the morning, but were cut down by concentrated fire.  Lt. Col. Cole ordered artillary fire on the farmhouse, but the German fire did not subside.  at 06:15 using a smoke screen Lt. Col. Cole ordered a bayonette charge at the German positions.  The oposition was overwhelmed in close quarters combat which earned Lt. Col. Cole the Medal of Honor.  The rest of the 502nd was called up to reinforce Cole, but came under heavy mortar fire and was only able to add to Cole's defensive positions.  Repeated German counter attacks fell on the 502nd, with the final one at 18:30 nearly overwhelming the 3rd batallion.  Rolling artillery fire was called in, so close that many American troops were killed with friendly fire, but the Germans were finally pushed back.  The 327th crossed the canal via a footbridge, but as they advanced came under mortar fire and were pinned down a half mile short of Carentan.  The German 6th FRJ nearly out of ammunition withdrew during the night leaving only a small rear-guard within the city.`
                 );
-                map.flyTo([49.312995117070365, -1.2589214031919327], 16);
+                map.flyTo([49.312995117070365, -1.2589214031919327], 15);
                 d3.select("#d6").remove();
                 d3.select("#d17").remove();
                 d3.select("#d1058").remove();
@@ -679,7 +679,7 @@
                 d3.select('#content').text(
                     `On June 12th the 506th and 501st were brought in from their reserve positions to assist in the assault on Hill 30th just southwest of Carentan.  Their movements were covered under an all-night naval bombardmant.  At 02:00 the 506th moved down the highway passing through the 502nd's defensive positions, then cross country to the west capturing La Billonnerie at 05:00.  The 501st traveling to the east, passed the 327th, crossed the canal and reached Hill 30 by 06:30.  At 06:00 the 506th and 401st GIR 1st battalion attached to the 327th attacked Carentan capturing the city by 07:30.  By the afternoon the 506th and 501st began advancing southwest where they met heavy resistance from the 17th SS Panzergrenadiers and 6th FJR that had retreated from the city.  The Germans having the higher ground dug in and battled the Americans throughout the night.`
                 );
-                map.flyTo([49.303682080592395, -1.2464258521806684], 13);
+                map.flyTo([49.312202701482626, -1.2414564058825839], 13);
                 d3.select("#d6").remove();
                 d3.select("#d17").remove();
                 d3.select("#d1058").remove();
@@ -708,7 +708,7 @@
                 d3.select('#content').text(
                     `At dawn just as the Americans were set to attack the German line, they came under heavy assualt from tanks and artillery.  The 17th Panzer and 6th FJR hit the 501st hard on the left flank causing them to retreat. The left flank of the 506th also began to collapse under heavy fire, prompting the immediate dismissal of the F company commander.  The 502nd took up positions to the right of the 506th but by 13:00 they had suffered massive casualties and were on the verge of collapse.  60 tanks from the 2nd Armored Division arrived just in time to prevent the 506th and 502nd from being overrun, inflicting severe casualites on the Germans forcing them to withdraw to the southwest.  The American victory at Carentan allowed Utah and Omaha beach to be linked creating a secure lodgement for further American operations in France.`
                 );
-                map.flyTo([49.28566210821775, -1.2832497340930973], 14);
+                map.flyTo([49.289560761603184, -1.283680024497065], 14);
                 d3.select("#d6").remove();
                 d3.select("#d17").remove();
                 d3.select("#d1058").remove();
@@ -1106,7 +1106,7 @@
             //remove next day button as this will span 2 days up to the battle of Carentan
             d3.select('.btn').remove();
             //fly to St. Con-du-mont
-            map.flyTo([49.33475481560422, -1.273214772369016], 13);
+            map.flyTo([49.352251420906114, -1.2465870983165919], 13);
             //update content to describe troop movements
             d3.select('#content').text(
                 `The 501st failed to capture St. Come-du-Mont, one of it's D-day objectives so the consolidated 506th was brought up, with the 501st behind, to capture and assault the town for it's vital highway connection to Carentan.  The 502nd covered the right flank and aided in encircling the city to prevent German forces from escaping.  The 327th Glider Infantry protected the left flank and was held in reserve.  The 506th encountered heavy resistance at the highway junction to the south at what is now called Dead Mans Corner.  By the end of June 7th 1/3 of the German 6th Paratrooper regiment surrendered but St. Come-du-Mont was still held by the Germans.`
