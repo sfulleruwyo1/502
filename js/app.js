@@ -1,4 +1,22 @@
 (function () {
+    /**
+     * Global Variables
+     *  
+     * @param {object} map - leaflet map object 
+     * @param {object} maplayer - leaflet layer object
+     * @param {object} drops - leaflet layer
+     * @param {object} objectives - leaflet layer
+     * @param {object} highlight - leaflet layer
+     * @param {object} dropZone - leaflet layer
+     * @param {integer} elementCount - counter variable
+     * @param {integer} elementCount2 - counter variable
+     * @param {object} slider - Slider UI object
+     * @param {integer} day - day counter
+     * @param {string} url - geojson url path
+     * @param {object} tiles - leaflet map tile object
+     * 
+     **/
+
     let map;
     let maplayer;
     let drops;
@@ -8,55 +26,27 @@
     let elementCount = 0;
     let elementCount2 = 0;
     let slider;
-    let german_7;
     let day = 6;
+    let url = 'data/points.geojson';
     let tiles = L.tileLayer(
         'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
             attribution: ''
         });
 
-    map = L.map('map', { zoomControl: false })
-        .addLayer(tiles)
-        .setView([50.62246762810257, -1.538157657576358], 7);
-
-    map.on('click', function (e) {
-        console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
-    });
-
-    //create legend
-    // create a Leaflet control for the legend
-    const legendControl = L.control({
-        position: 'bottomleft'
-    });
-
-    // when the control is added to the map
-    legendControl.onAdd = function (map) {
-
-        // create a new division element with class of 'legend' and return
-        let legend = L.DomUtil.create('div', 'legend');
-        // disable scrolling of map while using controls
-        L.DomEvent.disableScrollPropagation(legend);
-
-        // disable click events while using controls
-        L.DomEvent.disableClickPropagation(legend);
-
-        return legend;
-
-    };
-
-    // add the legend control to the map
-    legendControl.addTo(map);
-
-    legend = $('.legend').html(
-        "<h3 class = 'h3Time'>June 6th 00:00 Hours</h3><div id = 'content' style = 'padding-top: 8px;'>June 6th 1944 The 502nd PIR left RAF Membury/Greenham Common for Drop Zone A, Southwest of Utah Beach in Nazi occupied Normandy.</div>"
-    );
+    /**
+     * Add Objective Markers to Leaflet Map
+     *  
+     * @param {void}
+     * 
+     * @return {void}
+     **/
 
     function addObjectiveMarkers() {
         d3.json('data/d_day_objectives.json', function (error, collection) {
             if (error) {
                 console.log(error);
             }
-            var geojsonMarkerOptions = {
+            let geojsonMarkerOptions = {
                 radius: 8,
                 fillColor: "yellow",
                 color: "#000",
@@ -103,12 +93,20 @@
         })
     }
 
+    /**
+     * Add Drop locations Markers to Leaflet Map
+     *  
+     * @param {void}
+     * 
+     * @return {void}
+     **/
+
     function addDrops() {
         d3.json('data/drops.geojson', function (error, collection) {
             if (error) {
                 console.log(error);
             }
-            var geojsonMarkerOptions = {
+            let geojsonMarkerOptions = {
                 radius: 4,
                 fillColor: "#0000FF",
                 color: "#20282e",
@@ -147,6 +145,14 @@
 
         })
     }
+
+    /**
+     * Add Drop Zone to Leaflet Map
+     *  
+     * @param {void}
+     * 
+     * @return {void}
+     **/
 
     function addDropZone() {
         d3.json('data/original_drop_zone.geojson', function (error, collection) {
@@ -194,6 +200,14 @@
         })
     }
 
+
+    /**
+     * Add Slider to leaflet map, set behaviour for each step in slider
+     *  
+     * @param {void}
+     * 
+     * @return {void}
+     **/
 
     function sliderui() {
         let sliderControl = L.control({
@@ -425,6 +439,14 @@
             }
         });
     }
+
+    /**
+     * Add Slider to leaflet map, set behaviour for each step in slider for June 7th-13th
+     *  
+     * @param {void}
+     * 
+     * @return {void}
+     **/
 
     function sliderui2() {
         let sliderControl = L.control({
@@ -738,8 +760,14 @@
         })
     }
 
+    /**
+     * Plane animation along path after scrolling text
+     *  
+     * @param {string} url - URL of json file
+     * 
+     * @return {void}
+     **/
 
-    let url = 'data/points.geojson';
 
     function addToMap(url) {
         let svg = d3.select(map.getPanes().overlayPane).append("svg");
@@ -828,6 +856,14 @@
             reset();
             transition();
 
+            /**
+             * Reset svg coordinates after map zoom, pan
+             *  
+             * @param {void}
+             * 
+             * @return {void}
+             **/
+
             function reset() {
                 let bounds = d3path.bounds(collection),
                     topLeft = bounds[0],
@@ -873,6 +909,14 @@
 
             } // end reset
 
+            /**
+             * Set parameters for plane travel speed and end behavior
+             *  
+             * @param {void}
+             * 
+             * @return {void}
+             **/
+
             function transition() {
                 linePath.transition()
                     .duration(15000)
@@ -917,6 +961,14 @@
 
             } //end transition
 
+            /**
+             * Add Slider to leaflet map, set behaviour for each step in slider for June 7th-13th
+             *  
+             * @param {void}
+             * 
+             * @return {function} returns interpolate function with time variable
+             **/
+
             function tweenDash() {
                 return function (t) {
                     //total length of path (single value)
@@ -935,6 +987,15 @@
                 }
             } //end tweenDash
 
+            /**
+             * project point to native svg coordinate system
+             *  
+             * @param {integer} x - coordinate
+             * @param {integer} y - coordinate
+             * 
+             * @return {void}
+             **/
+
             function projectPoint(x, y) {
                 let point = map.latLngToLayerPoint(new L.LatLng(y, x));
                 this.stream.point(point.x, point.y);
@@ -942,6 +1003,20 @@
         });
 
     }
+
+    /**
+     * Move troops on map based on geoJson path
+     *  
+     * @param {string} url - geoJson path
+     * @param {string} symbol - img path
+     * @param {integer} start - start array index, may not be needed
+     * @param {integer} end - end array index, may not be needed
+     * @param {string} regiment - regiment number
+     * @param {integer} moveDay - Day value from slider
+     * 
+     * @return {void}
+     **/
+
 
     function moveTroops(url, symbol, start, end, regiment, moveDay) {
         let svg = d3.select(map.getPanes().overlayPane).append("svg");
@@ -997,6 +1072,15 @@
             reset();
             transition();
 
+            /**
+             * Reset svg coordinates after map zoom, pan
+             *  
+             * @param {void}
+             * 
+             * @return {void}
+             **/
+
+
             function reset() {
                 let bounds = d3path.bounds(collection),
                     topLeft = bounds[0],
@@ -1028,6 +1112,14 @@
 
             } // end reset
 
+            /**
+             * Set parameters for plane travel speed and end behavior
+             *  
+             * @param {void}
+             * 
+             * @return {void}
+             **/
+
             function transition() {
                 linePath.transition()
                     .duration(15000)
@@ -1041,6 +1133,14 @@
 
 
             } //end transition
+
+            /**
+             * Add Slider to leaflet map, set behaviour for each step in slider for June 7th-13th
+             *  
+             * @param {void}
+             * 
+             * @return {function} returns interpolate function with time variable
+             **/
 
             function tweenDash() {
                 return function (t) {
@@ -1058,6 +1158,15 @@
                 }
             } //end tweenDash
 
+            /**
+             * project point to native svg coordinate system
+             *  
+             * @param {integer} x - coordinate
+             * @param {integer} y - coordinate
+             * 
+             * @return {void}
+             **/
+
             function projectPoint(x, y) {
                 let point = map.latLngToLayerPoint(new L.LatLng(y, x));
                 this.stream.point(point.x, point.y);
@@ -1066,29 +1175,113 @@
 
     }
 
+    /**
+     * Apply svg coordinated to layer on map
+     *  
+     * @param {object} d - d3 datum
+     * 
+     * @return {object} leaflet lat/long to layer object
+     **/
+
     function applyLatLngToLayer(d) {
         let y = d.geometry.coordinates[1]
         let x = d.geometry.coordinates[0]
         return map.latLngToLayerPoint(new L.LatLng(y, x))
     }
 
-    const animateText = document.querySelector('.crawl');
+    /**
+     * animate text movement on landing page
+     *  
+     * @param {void}
+     * 
+     * @return {void}
+     **/
 
-    animateText.addEventListener('animationend', () => {
-        $('.fade').fadeOut(500, () => {
-            $(this).remove();
-        });
-        $('.crawl-text').remove();
-        $('#title').animate({
-            opacity: 1
-        }, 5000);
-        $('#map').animate({
-            opacity: 1
-        }, 3000, () => {
-            addToMap(url);
+    function scrollText() {
+        const animateText = document.querySelector('.crawl');
+
+        animateText.addEventListener('animationend', () => {
+            $('.fade').fadeOut(500, () => {
+                $(this).remove();
+            });
+            $('.crawl-text').remove();
+            $('#title').animate({
+                opacity: 1
+            }, 5000);
+            $('#map').animate({
+                opacity: 1
+            }, 3000, () => {
+                addToMap(url);
+            });
+
         });
 
-    });
+    }
+
+
+
+    /**
+     * Create leaflet map
+     *  
+     * @param {void}
+     * 
+     * @return {void}
+     **/
+
+    function buildMap() {
+
+        //Instantiate Leaflet Map
+        map = L.map('map', {
+                zoomControl: false
+            })
+            .addLayer(tiles)
+            .setView([50.62246762810257, -1.538157657576358], 7);
+
+        map.on('click', function (e) {
+            console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+        });
+
+        //create legend
+        const legendControl = L.control({
+            position: 'bottomleft'
+        });
+
+        // when the control is added to the map
+        legendControl.onAdd = function (map) {
+
+            // create a new division element with class of 'legend' and return
+            let legend = L.DomUtil.create('div', 'legend');
+            // disable scrolling of map while using controls
+            L.DomEvent.disableScrollPropagation(legend);
+
+            // disable click events while using controls
+            L.DomEvent.disableClickPropagation(legend);
+
+            return legend;
+
+        };
+
+        // add the legend control to the map
+        legendControl.addTo(map);
+
+        //Set legend content
+        legend = $('.legend').html(
+            "<h3 class = 'h3Time'>June 6th 00:00 Hours</h3><div id = 'content' style = 'padding-top: 8px;'>June 6th 1944 The 502nd PIR left RAF Membury/Greenham Common for Drop Zone A, Southwest of Utah Beach in Nazi occupied Normandy.</div>"
+        );
+
+
+
+    }
+
+    //Animate text
+    scrollText()
+    //create leaflet map
+    buildMap()
+    
+
+    /**
+     * On click of dynamically created button move to next day and update map/legend
+     **/
 
     $(document).on('click', '.btn', function () {
         if (this.title == 'June 7th') {
@@ -1119,5 +1312,4 @@
         }
     });
 
-    $(document).on('mouseover')
 })();
