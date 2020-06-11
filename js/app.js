@@ -950,7 +950,6 @@
                 .attr("y", -37.5)
                 .attr("class", 'opacityIn');
 
-
             map.on("viewreset", reset);
             map.on("zoom", reset);
 
@@ -1009,6 +1008,8 @@
                     interpolate = d3.interpolateString("0," + l, l + "," + l);
                     let marker = d3.select("#d" + regiment);
                     let p = linePath.node().getPointAtLength(t * l);
+
+
 
                     marker.attr("transform", "translate(" + p.x + "," + p.y +
                         ")"); //move marker
