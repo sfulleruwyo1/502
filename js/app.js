@@ -17,7 +17,7 @@
 
     map = L.map('map')
         .addLayer(tiles)
-        .setView([49.41542647972486, -1.262730877610028], 7);
+        .setView([50.62246762810257, -1.538157657576358], 8);
 
     map.on('click', function (e) {
         console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
@@ -274,7 +274,7 @@
                 d3.select('#content').html(
                     `<p>Between 02:00 and 09:30 Lt Col Robert G. Cole assembled 75 men from the 101st and 82nd airborne to assault the coastal gun batteries.  They encountered one enemy convoy killing multiple Germans and taking 10 prisoners.  Upon reaching the outskirts of the gun battery they discovered that the battery had been dismantled and removed after an earlier air raid.</p>`
                 );
-                map.flyTo([49.43441055086234, -1.244582527044631],
+                map.flyTo([49.446709410674615, -1.2467761260109491],
                     13);
                 if (map.hasLayer(objectives)) {
                     map.removeLayer(objectives)
@@ -294,7 +294,7 @@
                 }
 
                 highlight.bindPopup(
-                    `<h3>Coastal Battery</h3><p>In 1943 four captured Russian 122mm howitzers were placed at this location to provide artillery support in case of an amphibious landing.</p><p>Unbeknownst to the 502nd they were damaged by Lancaster bombers on May 28th and relocated further southwest.</p><div class = 'polaroid'><img width = '270px' src = 'img/A-19_122mm.jpg'></div><div class="paperclip"></div>`
+                    `<h3>Coastal Battery</h3><p>In 1943 four captured Russian 122mm howitzers were placed at this location to provide artillery support in case of an amphibious landing.</p><p>Unbeknownst to the 502nd they were damaged by Lancaster bombers on May 28th and relocated further southwest.</p><div class = 'polaroid'><img width = '570px' src = 'img/A-19_122mm.jpg'></div><div class="paperclip"></div>`
                 );
                 highlight.openPopup();
 
@@ -304,7 +304,7 @@
                 d3.select('#content').text(
                     'Lt. Col. Cassidy landed near St. Germain-de-Varreville and at 06:30 gathered a small force to assault the WXYZ complex containing a barracks of German soldiers that were previously manning the coastal battery.  Lt. Col. Cassidy along with 15 men killed or captured about 150 German soldiers.  Near the end of the raid Lt. Col. Michaelis arrived with an additional 200 men to link up with Cassidys men.'
                 );
-                map.flyTo([49.437314504327446, -1.254497969481392],
+                map.flyTo([49.44994457295905, -1.2495182552327977],
                     13);
                 if (map.hasLayer(objectives)) {
                     map.removeLayer(objectives)
@@ -324,7 +324,7 @@
                 }
 
                 highlight.bindPopup(
-                    `<h3>WXYZ Complex</h3><p>In 1944 farm building and Manoir at Mesieres had been pressed into service as a barracks complex for soldiers manning the nearby coastal battery.</p>`
+                    `<h3>WXYZ Complex</h3><p>In 1944 farm building and Manoir at Mesieres had been pressed into service as a barracks complex for soldiers manning the nearby coastal battery.</p><p>Sgt. Harrison Summers led the attack with 2 other soldiers clearing multiple buildings and singlehandeldy killing 30 German soldiers.  He was given a battle field commission, and nominated for the Medal of Honor for his actions.</p><div class = 'polaroid2'><img width = '570px' src = 'img/WXYZ.jpg'></div><div class="paperclip3"></div>`
                 );
                 highlight.openPopup();
             } else if (time == 7) {
@@ -379,7 +379,7 @@
                 }
 
                 highlight.bindPopup(
-                    `<h3>Exit 3</h3><p>The Aerial photo below shows the entire area behind the causway and west of Utah Beach flooded prior to the airborne assault.</p><div class = 'polaroid'><img width = '270px'src = 'img/causeway.jpg'></div><div class="paperclip2"></div>`
+                    `<h3>Exit 3</h3><p>The Aerial photo below shows the entire area behind the causway and west of Utah Beach flooded prior to the airborne assault.</p><div class = 'polaroid'><img width = '570px'src = 'img/causeway.jpg'></div><div class="paperclip2"></div>`
                 );
                 highlight.openPopup();
 
@@ -451,6 +451,47 @@
 
         // add the control to the map
         sliderControl.addTo(map);
+
+        let unitLegend = L.control({
+            position: 'topright'
+        });
+
+        // when the control is added to the map
+        unitLegend.onAdd = (map) => {
+
+            // create a new division element with class of 'legend' and return
+            let legend = L.DomUtil.create('div', 'unitLegend');
+            // disable scrolling of map while using controls
+            L.DomEvent.disableScrollPropagation(legend);
+
+            // disable click events while using controls
+            L.DomEvent.disableClickPropagation(legend);
+
+            return legend;
+
+        };
+
+        // add the legend control to the map
+        unitLegend.addTo(map);
+        $('.unitLegend').html(`<ul class="tabs">
+    
+        <li class="tab">
+            <input type="radio" name="tabs" checked="checked" id="tab1" />
+            <label for="tab1">American Units</label>
+            <div id="tab-content1" class="content">
+            <div class = 'row'><div class = 'col'><img src = 'img/327th.png' height = '50px' width = '50px'>327th Glider Infantry Regiment</div><div class = 'col'><img src = 'img/501st.png' height = '50px' width = '50px'>501st Parachute Infantry Regiment</div><div class = 'col'><img src = 'img/502nd.png' height = '50px' width = '50px'>502nd Parachute Infantry Regiment</div><div class = 'col'><img src = 'img/506th.png' height = '50px' width = '50px'>506th Parachute Infantry Regiment</div><div class = 'col'><img src = 'img/sherman.PNG' height = '50px' width = '50px'>2nd Armored Division</div></div>
+            </div>
+        </li>
+        
+        <li class="tab">
+          <input type="radio" name="tabs" id="tab2" />
+          <label for="tab2">German Units</label>   
+          <div id="tab-content2" class="content">
+          <div class = 'row'><div class = 'col'><img src = 'img/6th.png' height = '50px' width = '50px'>6th Fallshirmjager Division(Parachute Infantry)</div><div class = 'col'><img src = 'img/1058th.png' height = '50px' width = '50px'>1058th Grenadier Regiment</div><div class = 'col'><img src = 'img/panzer.png' height = '50px' width = '50px'>17th Panzergrenadier Division</div></div>
+           </div>
+        </li>
+            
+      </ul>`)
 
         if (elementCount2 == 0) {
             const dayControl = L.control({
@@ -834,7 +875,7 @@
 
             function transition() {
                 linePath.transition()
-                    .duration(10000)
+                    .duration(15000)
                     .attrTween("stroke-dasharray", tweenDash)
                     .each('end', function () {
                         d3.select('#marker')
@@ -1031,7 +1072,23 @@
         return map.latLngToLayerPoint(new L.LatLng(y, x))
     }
 
-    addToMap(url);
+    const animateText = document.querySelector('.crawl');
+
+    animateText.addEventListener('animationend', () => {
+        $('.fade').fadeOut(500, () => {
+            $(this).remove();
+        });
+        $('.crawl-text').remove();
+        $('#title').animate({
+            opacity: 1
+        }, 5000);
+        $('#map').animate({
+            opacity: 1
+        }, 3000, () => {
+            addToMap(url);
+        });
+
+    });
 
     $(document).on('click', '.btn', function () {
         if (this.title == 'June 7th') {

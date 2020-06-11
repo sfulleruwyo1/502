@@ -1,7 +1,7 @@
 html,
 body {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
 }
 
 body {
@@ -10,7 +10,22 @@ body {
     background-repeat: no-repeat;
     background-size: auto;
     background-size: cover;
+    overflow: hidden;
+
 }
+
+.image-box {
+
+    /* Here's the trick */
+    box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, 0.5);
+
+    /* Basic background styles */
+    background: var(../img/header.jpg) center center no-repeat;
+    background-size: cover;
+
+
+}
+
 
 #map {
     position: fixed;
@@ -18,6 +33,7 @@ body {
     left: 10vw;
     bottom: 15vh;
     width: 80%;
+    opacity: 0.0;
 
 }
 
@@ -146,6 +162,96 @@ svg {
     height: 22px;
 }
 
+
+/* styling for tabs */
+.tabs {
+    width: 650px;
+    display: block;
+    position: relative;
+
+
+}
+
+.tabs .tab {
+    left: 500px;
+}
+
+.tabs .tab {
+    float: left;
+    display: block;
+
+}
+
+.tabs .tab>input[type="radio"] {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+.tabs .tab>label {
+    display: block;
+    padding: 6px 21px;
+    font-size: 12px;
+    right: 40px;
+    border-radius: 7px 7px 0px 0px;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    color: rgba(78, 71, 61, 1);
+    font-family: "Josefin Sans";
+    background-image: url(../img/document.PNG);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, 0.1);
+
+}
+
+.tabs .content {
+    z-index: 0;
+    /* or display: none; */
+    overflow: hidden;
+    width: 600px;
+    padding: 25px;
+    position: absolute;
+    top: 27px;
+    left: 0;
+    background-image: url(../img/document.PNG);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: rgba(78, 71, 61, 1);
+    font-family: "Josefin Sans";
+    font-size: 1.2em;
+    opacity: 0;
+    transition: opacity 400ms ease-out;
+    text-align: center;
+}
+
+.tabs>.tab>[id^="tab"]:checked+label {
+    top: 0;
+    background-image: url(../img/document.PNG);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: rgba(78, 71, 61, 1);
+    font-family: "Josefin Sans";
+    box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, 0);
+}
+
+
+.tabs>.tab>[id^="tab"]:checked~[id^="tab-content"] {
+    z-index: 1;
+    /* or display: block; */
+    opacity: 1;
+    transition: opacity 400ms ease-out;
+    font-family: "Josefin Sans";
+
+}
+
 #ui-controls {
     width: 250px;
     padding: 8px 25px 8px 15px;
@@ -266,6 +372,8 @@ label {
     -webkit-border-radius: 0 !important;
     -moz-border-radius: 0 !important;
     border-radius: 0 !important;
+    width: 660px !important;
+
 }
 
 .leaflet-popup-content-wrapper,
@@ -297,12 +405,12 @@ label {
 
 .polaroid {
     background-image: url(../img/photo_background.png);
-    /* background-color: rgba(238, 234, 234); */
     padding-top: 15px;
     padding-right: 15px;
     padding-left: 15px;
     padding-bottom: 15px;
     position: relative;
+    width: 570px;
     right: 20px;
     transform: rotate(-5deg);
     -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
@@ -310,11 +418,34 @@ label {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
 }
 
+.polaroid img {
+    filter: sepia(25%);
+}
+
+.polaroid2 {
+    background-image: url(../img/photo_background.png);
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    position: relative;
+    width: 570px;
+    left: 50px;
+    top: 9px;
+    transform: rotate(5deg);
+    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+.polaroid2 img {
+    filter: sepia(25%);
+}
 
 .paperclip {
     box-sizing: border-box;
     display: block;
-    top: 58%;
+    top: 38%;
     left: 13px;
     /* right: 50%; */
     /* margin-top: -40px; */
@@ -348,7 +479,7 @@ label {
 .paperclip2 {
     box-sizing: border-box;
     display: block;
-    top: 46%;
+    top: 27%;
     left: 13px;
     /* right: 50%; */
     /* margin-top: -40px; */
@@ -371,6 +502,40 @@ label {
 }
 
 .paperclip2::after {
+    top: -15px;
+    left: -3px;
+    height: 15px;
+    width: 16px;
+    border-radius: 90px 90px 0 0;
+    border-bottom: none;
+}
+
+.paperclip3 {
+    box-sizing: border-box;
+    display: block;
+    top: 36%;
+    left: 650px;
+    /* right: 50%; */
+    /* margin-top: -40px; */
+    margin-left: -19px;
+    height: 60px;
+    width: 18px;
+    border: 3px groove #DDDDDD;
+    border-radius: 0 0 90px 90px;
+    border-top: none;
+    position: absolute;
+    transform: rotate(30deg);
+    -webkit-transform: rotate(30deg);
+    -webkit-backface-visibility: hidden;
+}
+
+.paperclip3::after {
+    content: '';
+    position: absolute;
+    border: 3px groove #DDDDDD;
+}
+
+.paperclip3::after {
     top: -15px;
     left: -3px;
     height: 15px;
@@ -407,4 +572,158 @@ h2 {
     padding-left: 15px;
     padding-right: 15px;
     text-align: center;
+}
+
+.fade {
+    position: relative;
+    width: 100%;
+    min-height: 30vh;
+    top: -25px;
+    background-image: linear-gradient(0deg, transparent, black 75%);
+    z-index: 10001;
+}
+
+.crawl-text {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 75vh;
+    height: 800px;
+    color: white;
+    text-shadow: 2px 2px #000000;
+    font-family: "Josefin Sans";
+    font-size: 300%;
+    font-weight: 600;
+    letter-spacing: 6px;
+    line-height: 150%;
+    perspective: 400px;
+    text-align: justify;
+    z-index: 10000;
+
+}
+
+.crawl {
+    position: relative;
+    top: 100px;
+    transform-origin: 50% 100%;
+    animation: crawl 50s linear;
+    width: 65%;
+}
+
+@keyframes crawl {
+    0% {
+        top: -100px;
+    }
+
+    100% {
+        top: -3100px;
+    }
+}
+
+
+#title {
+    text-align: center;
+    opacity: 0;
+}
+
+.title {
+    text-align: center;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    margin: 18px 0;
+    width: 100%;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #D3D3D3;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: #A9A9A9;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -14px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #D3D3D3;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: gray;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+}
+
+input[type=range]::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: #A9A9A9;
+    cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: #2a6495;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: #D3D3D3;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]::-ms-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: #D3D3D3;
+    cursor: pointer;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: #D3D3D3;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: #D3D3D3;
 }
