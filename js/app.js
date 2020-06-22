@@ -29,7 +29,7 @@
     let slider2;
     let layerControls;
     let linePath;
-    let troopLinePath;
+    let linePath2;
     let day = 6;
     let url = 'data/points.geojson';
     let tiles = L.tileLayer(
@@ -214,6 +214,7 @@
      **/
 
     function sliderui() {
+        $('svg').remove();
         let sliderControl = L.control({
             position: 'bottomright'
         });
@@ -222,12 +223,11 @@
         sliderControl.onAdd = function (map) {
 
             // select an existing DOM element with an id of "ui-controls"
-
             slider = L.DomUtil.get("ui-controls");
             L.DomUtil.removeClass(slider, 'opacity');
 
             // disable scrolling of map while using controls
-            L.DomEvent.disableScrollPropagation(slider);
+            // L.DomEvent.disableScrollPropagation(slider);
 
             // disable click events while using controls
             L.DomEvent.disableClickPropagation(slider);
@@ -238,6 +238,7 @@
 
         // add the control to the map
         sliderControl.addTo(map);
+
 
         if (!map.hasLayer(drops)) {
             addDrops()
@@ -446,12 +447,13 @@
      **/
 
     function sliderui2() {
-        let sliderControl = L.control({
+
+        let sliderControl2 = L.control({
             position: 'bottomright'
         });
 
         // when added to the map
-        sliderControl.onAdd = function (map) {
+        sliderControl2.onAdd = function (map) {
 
             // select an existing DOM element with an id of "ui-controls"
 
@@ -459,7 +461,7 @@
             L.DomUtil.removeClass(slider2, 'opacity');
 
             // disable scrolling of map while using controls
-            L.DomEvent.disableScrollPropagation(slider2);
+            // L.DomEvent.disableScrollPropagation(slider2);
 
             // disable click events while using controls
             L.DomEvent.disableClickPropagation(slider2);
@@ -469,48 +471,7 @@
         }
 
         // add the control to the map
-        sliderControl.addTo(map);
-
-        let unitLegend = L.control({
-            position: 'topright'
-        });
-
-        // when the control is added to the map
-        unitLegend.onAdd = (map) => {
-
-            // create a new division element with class of 'legend' and return
-            let legend = L.DomUtil.create('div', 'unitLegend');
-            // disable scrolling of map while using controls
-            L.DomEvent.disableScrollPropagation(legend);
-
-            // disable click events while using controls
-            L.DomEvent.disableClickPropagation(legend);
-
-            return legend;
-
-        };
-
-        //     // add the legend control to the map
-        //     unitLegend.addTo(map);
-        //     $('.unitLegend').html(`<ul class="tabs">
-
-        //     <li class="tab">
-        //         <input type="radio" name="tabs" checked="checked" id="tab1" />
-        //         <label for="tab1">American Units</label>
-        //         <div id="tab-content1" class="content">
-        //         <div class = 'row'><div class = 'col'><img src = 'img/327th.png' height = '50px' width = '50px'><br>327th Glider Infantry Regiment</div><div class = 'col'><img src = 'img/501st.png' height = '50px' width = '50px'><br>501st Parachute Infantry Regiment</div><div class = 'col'><img src = 'img/502nd.png' height = '50px' width = '50px'><br>502nd Parachute Infantry Regiment</div><div class = 'col'><img src = 'img/506th.png' height = '50px' width = '50px'><br>506th Parachute Infantry Regiment</div><div class = 'col'><img src = 'img/sherman.PNG' height = '50px' width = '50px'><br>2nd Armored Division</div></div>
-        //         </div>
-        //     </li>
-
-        //     <li class="tab">
-        //       <input type="radio" name="tabs" id="tab2" />
-        //       <label for="tab2">German Units</label>   
-        //       <div id="tab-content2" class="content">
-        //       <div class = 'row'><div class = 'col'><img src = 'img/6th.png' height = '50px' width = '50px'><br>6th Fallshirmjager Division(Parachute Infantry)</div><div class = 'col'><img src = 'img/1058th.png' height = '50px' width = '50px'><br>1058th Grenadier Regiment</div><div class = 'col'><img src = 'img/panzer.png' height = '50px' width = '50px'><br>17th Panzergrenadier Division</div></div>
-        //        </div>
-        //     </li>
-
-        //   </ul>`)
+        sliderControl2.addTo(map);
 
         //load June 7th data
         day = 7;
@@ -1155,10 +1116,10 @@
             // create a new division element with class of 'legend' and return
             let legend = L.DomUtil.create('div', 'legend');
             // disable scrolling of map while using controls
-            L.DomEvent.disableScrollPropagation(legend);
+            // L.DomEvent.disableScrollPropagation(legend);
 
             // disable click events while using controls
-            L.DomEvent.disableClickPropagation(legend);
+            // L.DomEvent.disableClickPropagation(legend);
 
             return legend;
 
@@ -1172,10 +1133,11 @@
             "<h3 class = 'h3Time'>June 6th 00:00 Hours</h3><div id = 'content' style = 'padding-top: 8px;'>June 6th 1944 The 502nd PIR left RAF Membury/Greenham Common for Drop Zone A, Southwest of Utah Beach in Nazi occupied Normandy.</div>"
         );
 
-        
+
 
         //change opacity in case user turns off legend and resizes screen
         let clickCount = false;
+
         function myFunction(x) {
             if (x.matches) { // If media query matches
                 $(".legend").css('opacity', '0');
@@ -1190,9 +1152,11 @@
         $("#widget").on('click', function () {
             if (clickCount == false) {
                 $(".legend").css('opacity', '1');
+                $(".legend").css('z-index', '999');
                 clickCount = true;
             } else {
                 $(".legend").css('opacity', '0');
+                $(".legend").css('z-index', '0');
                 clickCount = false;
             }
         })
@@ -1200,8 +1164,6 @@
         var x = window.matchMedia("(max-width: 900px)")
         myFunction(x) // Call listener function at run time
         x.addListener(myFunction) // Attach listener function on state changes
-
-
 
     }
 
@@ -1248,14 +1210,6 @@
      * @return {void}
      **/
     function clearMap() {
-        if (slider != undefined) {
-            L.DomUtil.remove(slider);
-        }
-
-        if (slider2 != undefined) {
-            L.DomUtil.remove(slider2);
-        }
-
         if (map.hasLayer(drops)) {
             map.removeLayer(drops);
         }
@@ -1302,6 +1256,10 @@
         if (linePath != undefined) {
             linePath.interrupt().selectAll("*").interrupt();
         }
+
+        // if (linePath2 != undefined) {
+        //     linePath2.interrupt().selectAll("*").interrupt();
+        // }
     }
 
     //Animate text
@@ -1315,19 +1273,7 @@
      **/
 
     $(document).on('click', '.btn', function (e) {
-        if (this.title == 'June 7th') {
-            day = 7;
-
-            //fly to St. Con-du-mont
-            map.flyTo([49.352251420906114, -1.2465870983165919], 13);
-            //update content to describe troop movements
-            d3.select('#content').text(
-                `The 501st failed to capture St. Come-du-Mont, one of it's D-day objectives so the consolidated 506th was brought up, with the 501st behind, to capture and assault the town for it's vital highway connection to Carentan.  The 502nd covered the right flank and aided in encircling the city to prevent German forces from escaping.  The 327th Glider Infantry protected the left flank and was held in reserve.  The 506th encountered heavy resistance at the highway junction to the south at what is now called Dead Mans Corner.  By the end of June 7th 1/3 of the German 6th Paratrooper regiment surrendered but St. Come-du-Mont was still held by the Germans.`
-            );
-            L.DomUtil.remove(slider);
-            sliderui2();
-
-        } else if ($(this).attr('id') == 'scrollSkip') {
+        if ($(this).attr('id') == 'scrollSkip') {
             //scroll skip clicked for intro text.
             $('.fade').fadeOut(500, () => {
                 $(this).remove();
@@ -1341,49 +1287,6 @@
             }, 3000, () => {
                 addToMap(url);
             });
-
-        } else {
-            day = 6;
-            //clear map and refocus
-            d3.select("#d6").remove();
-            d3.select("#d17").remove();
-            d3.select("#d1058").remove();
-            d3.select("#d502").remove();
-            d3.select("#d501").remove();
-            d3.select("#d506").remove();
-            d3.select("#d327").remove();
-            d3.select("#d1_502A").remove();
-            d3.select("#d1_502B").remove();
-            d3.select("#d1_502C").remove();
-            d3.select("#d3_502H").remove();
-            d3.select("#d3_502G").remove();
-            d3.select("#d6_1").remove();
-            d3.select("#d6_2").remove();
-            d3.select("#d6_3").remove();
-            d3.select("#d2").remove();
-            L.DomUtil.remove(slider2);
-            $('#sliders').append(`<div id="ui-controls" class='opacity'>
-            <span class="time">June 6th 00:00 Hours</span>
-            <label>
-                <span class="min">00:00</span>
-                <span class="max">19:00</span>
-                <input id='range' type="range" min="0" , max="5" , value="0" , step="1" , class="year-slider">
-            </label>
-        </div>
-        <div id="ui-controls2" class='opacity'>
-            <span class="time2">June 7th</span>
-            <label>
-                <span class="min2">June 7th</span>
-                <span class="max2">June 13th</span>
-                <input id="range2" type="range" min="7" , max="13" , value="0" , step="1" , class="year-slider2">
-            </label>
-        </div>`)
-            addToMap(url)
-            map.flyTo([50.62246762810257, -1.538157657576358], 7)
-            $('.legend').html(
-                "<h3 class = 'h3Time'>June 6th 00:00 Hours</h3><div id = 'content' style = 'padding-top: 8px;'>June 6th 1944 The 502nd PIR left RAF Membury/Greenham Common for Drop Zone A, Southwest of Utah Beach in Nazi occupied Normandy.</div>"
-            );
-            //sliderui()
 
         }
     });
@@ -1400,13 +1303,8 @@
 
     //nav link functionality
     $("#6thLink").on('click', function () {
-        console.log('june 6th click');
-        //Clear map
-        // if (troopLinePath != undefined) {
-        //     troopLinePath.interrupt().selectAll("*").interrupt();
-        // }
-
-        clearMap()
+        $("#ui-controls").remove();
+        $("#ui-controls2").remove();
         $('#sliders').append(`<div id="ui-controls" class='opacity'>
             <span class="time">June 6th 00:00 Hours</span>
             <label>
@@ -1414,15 +1312,10 @@
                 <span class="max">19:00</span>
                 <input id='range' type="range" min="0" , max="5" , value="0" , step="1" , class="year-slider">
             </label>
-        </div>
-        <div id="ui-controls2" class='opacity'>
-            <span class="time2">June 7th</span>
-            <label>
-                <span class="min2">June 7th</span>
-                <span class="max2">June 13th</span>
-                <input id="range2" type="range" min="7" , max="13" , value="0" , step="1" , class="year-slider2">
-            </label>
-        </div>`)
+        </div>`);
+        //Clear map
+        clearMap()
+
         addToMap(url)
         map.flyTo([50.62246762810257, -1.538157657576358], 7)
         $('.legend').html(
@@ -1433,28 +1326,19 @@
 
     //nav link functionality
     $("#7thLink").on('click', function () {
-        console.log('june 7th click');
-        //Clear map
-
+        $("#ui-controls").remove();
+        $("#ui-controls2").remove();
+        $('#sliders').append(`<div id="ui-controls2" class='opacity'>
+            <span class="time2">June 7th</span>
+            <label>
+                <span class="min2">June 7th</span>
+                <span class="max2">June 13th</span>
+                <input id="range2" type="range" min="7" , max="13" , value="0" , step="1" , class="year-slider2">
+            </label>
+        </div>`)
+        //clear map
         clearMap()
-        $('#sliders').append(`<div id="ui-controls" class='opacity'>
-                <span class="time">June 6th 00:00 Hours</span>
-                <label>
-                    <span class="min">00:00</span>
-                    <span class="max">19:00</span>
-                    <input id='range' type="range" min="0" , max="5" , value="0" , step="1" , class="year-slider">
-                </label>
-            </div>
-            <div id="ui-controls2" class='opacity'>
-                <span class="time2">June 7th</span>
-                <label>
-                    <span class="min2">June 7th</span>
-                    <span class="max2">June 13th</span>
-                    <input id="range2" type="range" min="7" , max="13" , value="0" , step="1" , class="year-slider2">
-                </label>
-            </div>`)
         day = 7;
-
         //fly to St. Con-du-mont
         map.flyTo([49.352251420906114, -1.2465870983165919], 13);
         //update content to describe troop movements

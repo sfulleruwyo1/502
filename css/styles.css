@@ -125,6 +125,65 @@ svg {
     font-weight: bold;
 }
 
+/* Responsive css for legend */
+#widget {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    position: relative;
+    background-image: url(../img/document.PNG);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: rgba(78, 71, 61, 1);
+    font-family: "Josefin Sans";
+    font-size: 1em;
+    /* top: 120px; */
+    z-index: 1000;
+}
+
+@media only screen and (max-device-width : 900px) {
+
+    /* remove legend */
+    .legend {
+        opacity: 0;
+        z-index: -1;
+
+    }
+
+    .legend #content {
+        font-size: 0.7em;
+    }
+
+    #widget {
+        opacity: 1;
+        z-index: 999;
+    }
+
+}
+
+@media only screen and (min-device-width : 901px) {
+
+    /* remove legend */
+    .legend {
+        opacity: 1;
+        z-index: 999;
+
+    }
+
+    .legend #content {
+        font-size: 1.3em;
+    }
+
+    #widget {
+        opacity: 0;
+        z-index: -1;
+    }
+
+}
+
+
 .legend {
     padding: 6px 8px;
     font-size: 1.3em;
@@ -796,7 +855,7 @@ body {
     background-color: white;
     padding: 20px;
     margin: auto;
-    width: 75%;
+    width: 50%;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
@@ -816,10 +875,13 @@ body {
     color: rgba(78, 71, 61, 1);
     font-size: 35px;
     font-weight: bold;
+    position:relative;
+    top: -15px;
 }
 
 .close-btn:hover {
     color: lightgray;
+    cursor: pointer;
 }
 
 @-webkit-keyframes animatetop {
@@ -859,6 +921,7 @@ body {
 .right {
     flex: 1;
     display: inline-block;
+    padding-left: 15px;
 }
 
 .leftInner {
@@ -885,52 +948,4 @@ hr {
 
 #title {
     z-index: 9999;
-}
-
-/* Responsive css for legend */
-#widget {
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 2px;
-    position: relative;
-    background-image: url(../img/document.PNG);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    color: rgba(78, 71, 61, 1);
-    font-family: "Josefin Sans";
-    font-size: 1em;
-    /* top: 120px; */
-    z-index: 1000;
-}
-
-@media only screen and (max-device-width : 900px) {
-
-    /* remove legend */
-    .legend {
-        opacity: 0;
-        z-index: -1;
-    }
-
-    #widget {
-        opacity: 1;
-        z-index: 999;
-    }
-
-}
-
-@media only screen and (min-device-width : 901px) {
-
-    /* remove legend */
-    .legend {
-        opacity: 1;
-        z-index: 999;
-    }
-
-    #widget {
-        opacity: 0;
-        z-index: -1;
-    }
-
 }
