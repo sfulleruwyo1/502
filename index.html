@@ -49,32 +49,26 @@
     <div id='title' class=''>
 
         <nav class="navbar">
-            <span class="navbar-toggle" id="js-navbar-toggle">
+            <span class="navbar-toggle toggle" id="js-navbar-toggle">
                 <i class="fa fa-bars"></i>
             </span>
             <h1 style='padding-left: 10px;'>The Great Crusade</h1>
             <h4>The 502nd Parachute Infantry Regiment Journey through Normandy</h4>
             <ul class="main-nav" id="js-menu">
                 <li>
-                    <a href="#" class="nav-links" id='6thLink'>June 6th</a>
+                    <a href="#" class="nav-links toggle" id='6thLink'>June 6th</a>
                 </li>
                 <li>
-                    <a href="#" class="nav-links" id='7thLink'>June 7th - 13th</a>
+                    <a href="#" class="nav-links toggle" id='7thLink'>June 7th - 13th</a>
                 </li>
                 <li>
-                    <a href="#" class="nav-links" id='unitLink'>Units</a>
+                    <a href="#" class="nav-links toggle" id='unitLink'>Units</a>
                 </li>
                 <li>
-                    <a href="#" class="nav-links" id='creditLink'>Credits</a>
+                    <a href="#" class="nav-links toggle" id='creditLink'>Credits</a>
                 </li>
             </ul>
         </nav>
-
-
-        <!-- <div class='col'>
-            <h1>The Great Crusade</h1>
-            <h2>The 502nd Parachute Infantry Regiment Journey through Normandy</h2>
-        </div> -->
     </div>
     <div class='mapdiv'>
         <div id="map"></div>
@@ -97,6 +91,10 @@
                 <input id="range2" type="range" min="7" , max="13" , value="0" , step="1" , class="year-slider2">
             </label>
         </div>
+    </div>
+
+    <div id='widget' class='bg-white round px3 py6 relative'>
+        <div><i class="fa fa-info-circle" aria-hidden="true"> Legend</i></div>
     </div>
 
     <!-- units modal -->

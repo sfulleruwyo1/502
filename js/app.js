@@ -1113,14 +1113,36 @@
 
         //Instantiate Leaflet Map
         map = L.map('map', {
-                zoomControl: false
+                zoomControl: true
             })
             .addLayer(tiles)
             .setView([50.62246762810257, -1.538157657576358], 7);
 
-        map.on('click', function (e) {
-            console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+        // map.on('click', function (e) {
+        //     console.log("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+        // });
+
+        // create Leaflet control for the legend
+        let legendWidget = L.control({
+            position: 'bottomleft'
         });
+
+        // when the control is added to the map
+        legendWidget.onAdd = function (map) {
+
+            // select the legend using id attribute of legend
+            var widget = L.DomUtil.get("widget");
+
+            // disable scroll and click functionality 
+            L.DomEvent.disableScrollPropagation(widget);
+            L.DomEvent.disableClickPropagation(widget);
+
+            // return the selection
+            return widget;
+
+        }
+
+        legendWidget.addTo(map);
 
         //create legend
         const legendControl = L.control({
@@ -1149,6 +1171,35 @@
         legend = $('.legend').html(
             "<h3 class = 'h3Time'>June 6th 00:00 Hours</h3><div id = 'content' style = 'padding-top: 8px;'>June 6th 1944 The 502nd PIR left RAF Membury/Greenham Common for Drop Zone A, Southwest of Utah Beach in Nazi occupied Normandy.</div>"
         );
+
+        
+
+        //change opacity in case user turns off legend and resizes screen
+        let clickCount = false;
+        function myFunction(x) {
+            if (x.matches) { // If media query matches
+                $(".legend").css('opacity', '0');
+                clickCount = false;
+            } else {
+                $(".legend").css('opacity', '1');
+                clickCount = true;
+            }
+        }
+
+        //click event to toggle legend on small screen
+        $("#widget").on('click', function () {
+            if (clickCount == false) {
+                $(".legend").css('opacity', '1');
+                clickCount = true;
+            } else {
+                $(".legend").css('opacity', '0');
+                clickCount = false;
+            }
+        })
+
+        var x = window.matchMedia("(max-width: 900px)")
+        myFunction(x) // Call listener function at run time
+        x.addListener(myFunction) // Attach listener function on state changes
 
 
 
@@ -1338,12 +1389,13 @@
     });
 
     //hamburger
-    let mainNav = document.getElementById('js-menu');
-    let navBarToggle = document.getElementById('js-navbar-toggle');
+    let mainNav = $('#js-menu');
+    let navBarToggle = $('.toggle');
 
-    navBarToggle.addEventListener('click', function () {
+    navBarToggle.on('click', function () {
 
-        mainNav.classList.toggle('active');
+        mainNav.toggleClass('active');
+
     });
 
     //nav link functionality
@@ -1427,11 +1479,6 @@
             modal.style.display = "none"
         }
     }
-
-
-
-
-
 
 
 })();
