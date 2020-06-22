@@ -98,9 +98,9 @@
     </div>
 
     <!-- units modal -->
-    <div class="modal">
+    <div class="modal unitModal">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
+            <span class="close-btn unit-close-btn">&times;</span>
             <div class='wrapper'>
                 <div class='left'>
                     <div>
@@ -197,6 +197,64 @@
             </div>
 
 
+        </div>
+    </div>
+
+    <!-- credits modal -->
+    <div class="modal creditModal">
+        <div class="modal-content">
+            <span class="close-btn credit-close-btn">&times;</span>
+
+            <h3>References:</h3>
+            <br>
+            <div class='credits'>
+                <ol>
+                    <li>Intelligence Map and troop movement references - Historical Division, Department of the Army
+                        -
+                        <a href='https://history.army.mil/books/wwii/utah/utah.htm'>Utah Beach to Cherbourg</a></li>
+                    <br>
+                    <li>Engagement references - McManus, John C. (2004) <a
+                            href='https://archive.org/details/americansatnorma00mcma_0'>The Americans at
+                            Normandy</a>
+                    </li>
+                </ol>
+            </div>
+            <br>
+            <h3>Methodology:</h3>
+            <br>
+            <p>Unit disposition and movement data for much of World War 2 is not accessible in a GIS format,
+                requiring georeferencing reference materials built on a cartesian coordinate system to a geographic
+                coordinate system.</p>
+            <br>
+            <p>Once the maps were georeferenced, troop locations and movements were digitized as accurately as
+                possible, but still genericized due to the inaccuracies of after action reports and maps.</p>
+            <br>
+            <p>Troop movement animations were performed using D3 to import the geoJson digitized troop paths,
+                generate a linear path of movement and animate the marker movement along the path.</p>
+            <br>
+            <h3>Purpose:</h3>
+            <br>
+            <p>
+                I became very interested in this topic listening to the stories my Grandfather would tell me. He was a
+                member of the 101st Airborne during World War II as a replacement Mortar man after the Battle of the
+                Bulge. Much of his training and friendships during the war came from experienced airborne troopers who
+                had survived Normandy, Holland, and Bastogne.
+                The reverence he had for these men's stories left a huge impact on me as a young child and fostered my
+                interest in this part of history into adulthood. I wanted this project to focus on his regiment (502nd)
+                to gain a better understanding of the men he looked up to and what they went through, and continue their
+                stories now that he is no longer able to tell them in his advanced stage of alzheimers...
+            </p>
+            <br>
+            <div class = 'center'>
+                <img src="img/normandy.jpg" class="responsive" alt="Normandy American Cemetary" width="640"
+                    height="433">
+            </div>
+            <div class = 'center'>
+                <p>Picture taken by Stagg Sgt. Perry Heimer, Aerial view of Normandy American Cemetary</p>
+            </div>
+            <br>
+            <br>
+            <br>
         </div>
     </div>
 
