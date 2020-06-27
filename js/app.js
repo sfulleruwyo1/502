@@ -1116,10 +1116,10 @@
             // create a new division element with class of 'legend' and return
             let legend = L.DomUtil.create('div', 'legend');
             // disable scrolling of map while using controls
-            // L.DomEvent.disableScrollPropagation(legend);
+            L.DomEvent.disableScrollPropagation(legend);
 
-            // disable click events while using controls
-            // L.DomEvent.disableClickPropagation(legend);
+            // // disable click events while using controls
+            L.DomEvent.disableClickPropagation(legend);
 
             return legend;
 
@@ -1139,8 +1139,9 @@
         let clickCount = false;
 
         function myFunction(x) {
+            let legend = L.DomUtil.create('div', 'legend');
             if (x.matches) { // If media query matches
-                $(".legend").css('opacity', '0');
+                $(".legend").css('opacity', '0');               
                 clickCount = false;
             } else {
                 $(".legend").css('opacity', '1');
@@ -1150,13 +1151,12 @@
 
         //click event to toggle legend on small screen
         $("#widget").on('click', function () {
+            let legend = L.DomUtil.create('div', 'legend');
             if (clickCount == false) {
                 $(".legend").css('opacity', '1');
-                $(".legend").css('z-index', '999');
                 clickCount = true;
             } else {
                 $(".legend").css('opacity', '0');
-                $(".legend").css('z-index', '0');
                 clickCount = false;
             }
         })
@@ -1349,9 +1349,11 @@
 
     })
 
+    //Units modal behaviour
+
     let modalBtn = document.getElementById("unitLink")
-    let modal = document.querySelector(".modal")
-    let closeBtn = document.querySelector(".close-btn")
+    let modal = document.querySelector(".unitModal")
+    let closeBtn = document.querySelector(".unit-close-btn")
     modalBtn.onclick = function () {
         modal.style.display = "block"
     }
@@ -1361,6 +1363,22 @@
     window.onclick = function (e) {
         if (e.target == modal) {
             modal.style.display = "none"
+        }
+    }
+
+    //Credits modal behaviour
+    let creditModalBtn = document.getElementById("creditLink")
+    let creditModal = document.querySelector(".creditModal")
+    let creditCloseBtn = document.querySelector(".credit-close-btn")
+    creditModalBtn.onclick = function () {
+        creditModal.style.display = "block"
+    }
+    creditCloseBtn.onclick = function () {
+        creditModal.style.display = "none"
+    }
+    window.onclick = function (e) {
+        if (e.target == creditModal) {
+            creditModal.style.display = "none"
         }
     }
 
